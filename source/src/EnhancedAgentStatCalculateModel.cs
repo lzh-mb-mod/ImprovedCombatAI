@@ -78,7 +78,7 @@ namespace EnhancedMissionMoreOptionsPlugin
             var config = MoreOptionsConfig.Get();
             if (config.ChangeMeleeAI)
             {
-                float meleeAILevel = config.MeleeAI;
+                float meleeAILevel = MathF.Clamp(config.MeleeAI / 100, 0, 1);
                 float num1 = meleeAILevel + agent.Defensiveness;
                 agentDrivenProperties.AiFacingMissileWatch = (float)((double)meleeAILevel * 0.0599999986588955 - 0.959999978542328);
                 agentDrivenProperties.AiFlyingMissileCheckRadius = (float)(8.0 - 6.0 * (double)meleeAILevel);
@@ -121,7 +121,7 @@ namespace EnhancedMissionMoreOptionsPlugin
             }
             if (config.ChangeRangedAI)
             {
-                float RangedAILevel = config.RangedAI;
+                float RangedAILevel = MathF.Clamp(config.RangedAI / 100, 0, 1);
                 agentDrivenProperties.AiRangedHorsebackMissileRange =
                     (float)(0.300000011920929 + 0.400000005960464 * (double)RangedAILevel);
                 agentDrivenProperties.AiShootFreq =

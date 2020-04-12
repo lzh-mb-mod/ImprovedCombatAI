@@ -13,6 +13,11 @@ namespace EnhancedMissionMoreOptionsPlugin
             _config = MoreOptionsConfig.Get();
         }
 
+        public override void SaveConfig()
+        {
+            _config.Serialize();
+        }
+
         public override bool UseRealisticBlocking
         {
             get => _config.UseRealisticBlocking;
