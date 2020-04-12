@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Module>
+	<Name value = "EnhancedMission Change AI for Beta"/>
+	<Id value = "EnhancedMissionMoreOptionsPlugin"/>
+	<Version value = "e1.0.5"/>
+	<SingleplayerModule value="true"/>
+	<MultiplayerModule value="false"/>
+	<DependedModules>
+         <DependedModule Id="Native"/>
+         <DependedModule Id="SandBoxCore"/>
+         <DependedModule Id="Sandbox"/>
+         <DependedModule Id="EnhancedMission"/>
+	</DependedModules>
+	<SubModules>
+		<SubModule>
+			<Name value = "EnhancedMissionMoreOptionsPluginSubModule"/>
+			<DLLName value = "EnhancedMissionMoreOptionsPlugin.dll"/>
+			<SubModuleClassType value = "EnhancedMissionMoreOptionsPlugin.EnhancedMissionMoreOptionsPluginSubModule"/>
+			<Tags>
+				<Tag key="DedicatedServerType" value ="none" />
+				<Tag key="IsNoRenderModeElement" value ="false" />
+			</Tags>
+		</SubModule>
+	</SubModules>
+
+	<Xmls/>
+</Module>
