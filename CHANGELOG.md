@@ -1,4 +1,8 @@
-### [e1.0.8] - 2020-04-13
+## [e2.0.0] - 2020-04-16
+### Changed
+- Change Mod name and id.
+
+## [e1.0.8] - 2020-04-13
 ### Changed
 - Enhance melee AI.
 

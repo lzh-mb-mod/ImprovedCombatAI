@@ -4,9 +4,9 @@ using System.Text;
 using System.Xml.Serialization;
 using EnhancedMission;
 
-namespace EnhancedMissionMoreOptionsPlugin
+namespace EnhancedMissionChangeAI
 {
-    public class MoreOptionsConfig : EnhancedMissionConfigBase<MoreOptionsConfig>
+    public class ChangeAIConfig : EnhancedMissionConfigBase<ChangeAIConfig>
     {
         protected static Version BinaryVersion => new Version(1, 0);
 
@@ -23,7 +23,7 @@ namespace EnhancedMissionMoreOptionsPlugin
                     break;
             }
         }
-        private static MoreOptionsConfig _instance;
+        private static ChangeAIConfig _instance;
         public string ConfigVersion { get; set; } = BinaryVersion.ToString();
 
         public bool UseRealisticBlocking = false;
@@ -34,13 +34,13 @@ namespace EnhancedMissionMoreOptionsPlugin
 
         public int MeleeAI = 100;
         public int RangedAI = 100;
-        private static MoreOptionsConfig CreateDefault()
+        private static ChangeAIConfig CreateDefault()
         {
-            return new MoreOptionsConfig();
+            return new ChangeAIConfig();
         }
 
 
-        public static MoreOptionsConfig Get()
+        public static ChangeAIConfig Get()
         {
             if (_instance == null)
             {
@@ -51,10 +51,10 @@ namespace EnhancedMissionMoreOptionsPlugin
             return _instance;
         }
 
-        protected override XmlSerializer serializer => new XmlSerializer(typeof(MoreOptionsConfig));
+        protected override XmlSerializer serializer => new XmlSerializer(typeof(ChangeAIConfig));
 
 
-        protected override void CopyFrom(MoreOptionsConfig other)
+        protected override void CopyFrom(ChangeAIConfig other)
         {
             ConfigVersion = other.ConfigVersion;
             UseRealisticBlocking = other.UseRealisticBlocking;
@@ -69,8 +69,8 @@ namespace EnhancedMissionMoreOptionsPlugin
             CopyFrom(CreateDefault());
         }
 
-        protected override string SaveName => SavePath + nameof(MoreOptionsConfig) + ".xml";
-        protected override string[] OldNames { get; } = { };
+        protected override string SaveName => SavePath + nameof(ChangeAIConfig) + ".xml";
+        protected override string[] OldNames { get; } = { "MoreOptionsConfig.xml" };
 
     }
 }

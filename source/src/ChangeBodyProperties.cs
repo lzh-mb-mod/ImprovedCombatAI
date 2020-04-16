@@ -2,23 +2,30 @@
 using EnhancedMission;
 using TaleWorlds.MountAndBlade;
 
-namespace EnhancedMissionMoreOptionsPlugin
+namespace EnhancedMissionChangeAI
 {
-    public class ChangeBodyProperties : ChangeBodyPropertiesBase
+    public class ChangeBodyProperties
     {
-        private MoreOptionsConfig _config;
+        private static ChangeBodyProperties _instance;
+        private ChangeAIConfig _config;
 
-        public ChangeBodyProperties()
+        public static ChangeBodyProperties Get()
         {
-            _config = MoreOptionsConfig.Get();
+            if (_instance == null)
+                _instance = new ChangeBodyProperties();
+            return _instance;
+        }
+        private ChangeBodyProperties()
+        {
+            _config = ChangeAIConfig.Get();
         }
 
-        public override void SaveConfig()
+        public void SaveConfig()
         {
             _config.Serialize();
         }
 
-        public override bool UseRealisticBlocking
+        public bool UseRealisticBlocking
         {
             get => _config.UseRealisticBlocking;
             set
@@ -30,7 +37,7 @@ namespace EnhancedMissionMoreOptionsPlugin
             }
         }
 
-        public override bool ChangeMeleeAI
+        public bool ChangeMeleeAI
         {
             get => _config.ChangeMeleeAI;
             set
@@ -41,7 +48,7 @@ namespace EnhancedMissionMoreOptionsPlugin
                 UpdateAgentProperties();
             }
         }
-        public override int MeleeAI
+        public int MeleeAI
         {
             get => _config.MeleeAI;
             set
@@ -52,7 +59,7 @@ namespace EnhancedMissionMoreOptionsPlugin
                 UpdateAgentProperties();
             }
         }
-        public override bool ChangeRangedAI
+        public bool ChangeRangedAI
         {
             get => _config.ChangeRangedAI;
             set
@@ -63,7 +70,7 @@ namespace EnhancedMissionMoreOptionsPlugin
                 UpdateAgentProperties();
             }
         }
-        public override int RangedAI
+        public int RangedAI
         {
             get => _config.RangedAI;
             set

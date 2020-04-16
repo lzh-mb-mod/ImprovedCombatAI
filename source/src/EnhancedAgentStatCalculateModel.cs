@@ -10,12 +10,14 @@ using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
-namespace EnhancedMissionMoreOptionsPlugin
+namespace EnhancedMissionChangeAI
 {
     public class EnhancedAgentStatCalculateModel : AgentStatCalculateModel
     {
         private AgentStatCalculateModel _previousModel;
 
+        public EnhancedAgentStatCalculateModel()
+        { }
         public EnhancedAgentStatCalculateModel(AgentStatCalculateModel previousModel)
         {
             _previousModel = previousModel;
@@ -24,12 +26,12 @@ namespace EnhancedMissionMoreOptionsPlugin
         public override void InitializeAgentStats(Agent agent, Equipment spawnEquipment, AgentDrivenProperties agentDrivenProperties,
             AgentBuildData agentBuildData)
         {
-            _previousModel.InitializeAgentStats(agent, spawnEquipment, agentDrivenProperties, agentBuildData);
+            _previousModel?.InitializeAgentStats(agent, spawnEquipment, agentDrivenProperties, agentBuildData);
         }
 
         public override void UpdateAgentStats(Agent agent, AgentDrivenProperties agentDrivenProperties)
         {
-            _previousModel.UpdateAgentStats(agent, agentDrivenProperties);
+            _previousModel?.UpdateAgentStats(agent, agentDrivenProperties);
             if (agent.IsHuman)
             {
                 EnhancedSetAiRelatedProperties(agent, agentDrivenProperties);
@@ -38,12 +40,12 @@ namespace EnhancedMissionMoreOptionsPlugin
 
         public override short CalculateConsumableMaxAmountAdder()
         {
-            return _previousModel.CalculateConsumableMaxAmountAdder();
+            return _previousModel?.CalculateConsumableMaxAmountAdder() ?? 0;
         }
 
         public override float GetDifficultyModifier()
         {
-            return _previousModel.GetDifficultyModifier();
+            return _previousModel?.GetDifficultyModifier() ?? 0;
         }
         private int GetWeaponSkill(BasicCharacterObject character, WeaponComponentData equippedItem)
         {
@@ -96,7 +98,7 @@ namespace EnhancedMissionMoreOptionsPlugin
                 missionWeapon = equipment[offHandItemIndex];
                 offHandWeapon = missionWeapon.CurrentUsageItem;
             }
-            var config = MoreOptionsConfig.Get();
+            var config = ChangeAIConfig.Get();
             float meleeAILevel;
             if (config.ChangeMeleeAI)
             {
@@ -176,7 +178,7 @@ namespace EnhancedMissionMoreOptionsPlugin
             agentDrivenProperties.AiRangerVerticalErrorMultiplier = num3 * 0.1f;
             agentDrivenProperties.AiRangerHorizontalErrorMultiplier = num3 * ((float)Math.PI / 90f);
             if (config.UseRealisticBlocking)
-                agentDrivenProperties.SetStat(DrivenProperty.UseRealisticBlocking, config.UseRealisticBlocking ? 1f : 0.0f);
+                agentDrivenProperties.SetStat(DrivenProperty.UseRealisticBlocking, 1f);
         }
     }
 }

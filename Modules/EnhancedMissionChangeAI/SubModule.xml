@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Module>
 	<Name value = "EnhancedMission Change AI for Beta"/>
-	<Id value = "EnhancedMissionMoreOptionsPlugin"/>
-	<Version value = "e1.0.8"/>
+	<Id value = "EnhancedMissionChangeAI"/>
+	<Version value = "e2.0.0"/>
 	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="false"/>
 	<DependedModules>
@@ -13,9 +13,9 @@
 	</DependedModules>
 	<SubModules>
 		<SubModule>
-			<Name value = "EnhancedMissionMoreOptionsPluginSubModule"/>
-			<DLLName value = "EnhancedMissionMoreOptionsPlugin.dll"/>
-			<SubModuleClassType value = "EnhancedMissionMoreOptionsPlugin.EnhancedMissionMoreOptionsPluginSubModule"/>
+			<Name value = "EnhancedMissionChangeAISubModule"/>
+			<DLLName value = "EnhancedMissionChangeAI.dll"/>
+			<SubModuleClassType value = "EnhancedMissionChangeAI.EnhancedMissionChangeAISubModule"/>
 			<Tags>
 				<Tag key="DedicatedServerType" value ="none" />
 				<Tag key="IsNoRenderModeElement" value ="false" />

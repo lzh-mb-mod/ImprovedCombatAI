@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+  <tags>
+    <tag language="简体中文" />
+  </tags>
+  <strings>
+    <string id="EnhancedMission_extensionchangeai" text="扩展：改变AI" />
+    <string id="EnhancedMission_userealisticblocking" text="更真实的格挡机制" />
+
+    <string id="EnhancedMission_changemeleeai" text="改变近战AI" />
+    <string id="EnhancedMission_meleeai" text="近战AI（0-100）" />
+
+    <string id="EnhancedMission_changerangedai" text="改变远程AI" />
+    <string id="EnhancedMission_rangedai" text="远程AI（0-100）" />
+  </strings>
+</base>
