@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Module>
-	<Name value = "EnhancedMission Change AI for Beta"/>
+	<Name value = "Enhanced Mission Change AI"/>
 	<Id value = "EnhancedMissionChangeAI"/>
 	<Version value = "e2.0.0"/>
 	<SingleplayerModule value="true"/>
