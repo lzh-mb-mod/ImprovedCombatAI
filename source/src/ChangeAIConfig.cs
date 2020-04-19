@@ -28,6 +28,10 @@ namespace EnhancedMissionChangeAI
 
         public bool UseRealisticBlocking = false;
 
+        public int MeleeAIDifficulty = 0;
+
+        public int RangedAIDifficulty = 0;
+
         public bool ChangeMeleeAI = false;
 
         public bool ChangeRangedAI = false;
@@ -58,6 +62,8 @@ namespace EnhancedMissionChangeAI
         {
             ConfigVersion = other.ConfigVersion;
             UseRealisticBlocking = other.UseRealisticBlocking;
+            MeleeAIDifficulty = other.MeleeAIDifficulty;
+            RangedAIDifficulty = other.RangedAIDifficulty;
             ChangeMeleeAI = other.ChangeMeleeAI;
             ChangeRangedAI = other.ChangeRangedAI;
             MeleeAI = other.MeleeAI;

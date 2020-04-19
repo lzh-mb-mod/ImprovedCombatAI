@@ -3,16 +3,17 @@
 A mod that provides features about changing AI to the base mode [`Enhanced Mission RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355).
 
 ## Features
+- Adjust combat(melee or ranged) AI difficulty between 0 and 100.
 
-- Enhance melee combat AI to fix the problem that AI won't defend in e1.1.0.
+  - By default combat AI level is determined by the weapon skill of soldiers. Soldier with weapon skill of 350 has 100 combat AI level and performs best when using corresponding weapon.
 
-  - By default combat AI is determined by the weapon skill of soldiers. Soldier with weapon skill of 350 performs best when using corresponding weapon.
+  - In this mod, combat AI difficulty is added to combat AI level.
 
-  - In this mod, this value is changed to 200 for melee AI: a soldier with 200 weapon skill now performs as if his weapon skill is 350 without this mod.
+  - For example, if a soldier has 100 one-handed weapon skill, and when he uses one-handed weapon, by default his melee AI level is 100 / 350 * 100 = 28.57. If you adjust melee AI difficulty to 50, then his melee AI level will be 50 + 28.57 = 78.57.
 
-- Be able to adjust combat AI to any value between 0 and 100 .
+- Be able to adjust combat AI level to any value between 0 and 100 directly.
 
-  - In this mod, you can change all troops' melee and ranged AI using corresponding option.
+  - Then the weapon skill will be ignored when determine combat AI level, and all units will have the same combat AI level you have set.
 
 - Realistic blocking.
 

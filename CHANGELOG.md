@@ -1,3 +1,7 @@
+## [e2.1.0] - 2020-04-19
+### Added
+- Add melee and ranged AI difficulty options.
+
 ## [e2.0.0] - 2020-04-16
 ### Changed
 - Change Mod name and id.

@@ -8,9 +8,11 @@
     <string id="EnhancedMission_extensionchangeai" text="Extension: Change AI" />
     <string id="EnhancedMission_userealisticblocking" text="Use Realistic Blocking" />
 
+    <string id="EnhancedMission_meleeaidifficulty" text="Melee AI Difficulty" />
     <string id="EnhancedMission_changemeleeai" text="Change Melee AI" />
     <string id="EnhancedMission_meleeai" text="Melee AI(0-100)" />
 
+    <string id="EnhancedMission_rangeaidifficulty" text="Ranged AI Difficulty" />
     <string id="EnhancedMission_changerangedai" text="Change Ranged AI" />
     <string id="EnhancedMission_rangedai" text="Ranged AI(0-100)" />
   </strings>

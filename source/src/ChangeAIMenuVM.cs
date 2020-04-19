@@ -13,9 +13,11 @@ namespace EnhancedMissionChangeAI
 
         public string UseRealisticBlockingString { get; } = GameTexts.FindText("str_use_realistic_blocking").ToString();
 
+        public string MeleeAIDifficultyString { get; } = GameTexts.FindText("str_melee_ai_difficulty").ToString();
         public string ChangeMeleeAIString { get; } = GameTexts.FindText("str_change_melee_ai").ToString();
         public string MeleeAIString { get; } = GameTexts.FindText("str_melee_ai").ToString();
 
+        public string RangedAIDifficultyString { get; } = GameTexts.FindText("str_ranged_ai_difficulty").ToString();
         public string ChangeRangedAIString { get; } = GameTexts.FindText("str_change_ranged_ai").ToString();
         public string RangedAIString { get; } = GameTexts.FindText("str_ranged_ai").ToString();
 
@@ -36,6 +38,9 @@ namespace EnhancedMissionChangeAI
         }
 
         [DataSourceProperty]
+        public NumericVM MeleeAIDifficulty { get; }
+
+        [DataSourceProperty]
         public bool ChangeMeleeAI
         {
             get => _changeBodyProperties?.ChangeMeleeAI ?? false;
@@ -44,6 +49,7 @@ namespace EnhancedMissionChangeAI
                 if (_changeBodyProperties == null || _changeBodyProperties.ChangeMeleeAI == value)
                     return;
                 _changeBodyProperties.ChangeMeleeAI = value;
+                this.MeleeAIDifficulty.IsVisible = !value;
                 this.MeleeAI.IsVisible = value;
                 OnPropertyChanged(nameof(ChangeMeleeAI));
             }
@@ -51,6 +57,9 @@ namespace EnhancedMissionChangeAI
 
         [DataSourceProperty]
         public NumericVM MeleeAI { get; }
+
+        [DataSourceProperty]
+        public NumericVM RangedAIDifficulty { get; }
 
         [DataSourceProperty]
         public bool ChangeRangedAI
@@ -61,6 +70,7 @@ namespace EnhancedMissionChangeAI
                 if (_changeBodyProperties == null || _changeBodyProperties.ChangeRangedAI == value)
                     return;
                 _changeBodyProperties.ChangeRangedAI = value;
+                this.RangedAIDifficulty.IsVisible = !value;
                 this.RangedAI.IsVisible = value;
                 OnPropertyChanged(nameof(ChangeRangedAI));
             }
@@ -72,7 +82,14 @@ namespace EnhancedMissionChangeAI
         public ChangeAIMenuVM(Action closeMenu)
             : base(closeMenu)
         {
-
+            this.ChangeMeleeAI = _changeBodyProperties?.ChangeMeleeAI ?? false;
+            this.MeleeAIDifficulty = new NumericVM(MeleeAIDifficultyString, _changeBodyProperties?.MeleeAIDifficulty ?? 0, 0, 100, true,
+                difficulty =>
+                {
+                    if (_changeBodyProperties == null)
+                        return;
+                    _changeBodyProperties.MeleeAIDifficulty = (int)difficulty;
+                });
             this.MeleeAI = new NumericVM(MeleeAIString, _changeBodyProperties?.MeleeAI ?? 0, 0, 100, true,
                 combatAI =>
                 {
@@ -80,7 +97,14 @@ namespace EnhancedMissionChangeAI
                         return;
                     _changeBodyProperties.MeleeAI = (int)combatAI;
                 }, 1, ChangeMeleeAI);
-
+            this.ChangeRangedAI = _changeBodyProperties?.ChangeRangedAI ?? false;
+            this.RangedAIDifficulty = new NumericVM(RangedAIDifficultyString, _changeBodyProperties?.RangedAIDifficulty ?? 0, 0, 100, true,
+                difficulty =>
+                {
+                    if (_changeBodyProperties == null)
+                        return;
+                    _changeBodyProperties.RangedAIDifficulty = (int) difficulty;
+                });
             this.RangedAI = new NumericVM(RangedAIString, _changeBodyProperties?.RangedAI ?? 0, 0, 100, true,
                 combatAI =>
                 {

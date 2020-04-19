@@ -37,6 +37,18 @@ namespace EnhancedMissionChangeAI
             }
         }
 
+        public int MeleeAIDifficulty
+        {
+            get => _config.MeleeAIDifficulty;
+            set
+            {
+                if (_config.MeleeAIDifficulty == value)
+                    return;
+                _config.MeleeAIDifficulty = value;
+                UpdateAgentProperties();
+            }
+        }
+
         public bool ChangeMeleeAI
         {
             get => _config.ChangeMeleeAI;
@@ -56,6 +68,18 @@ namespace EnhancedMissionChangeAI
                 if (_config.MeleeAI == value)
                     return;
                 _config.MeleeAI = value;
+                UpdateAgentProperties();
+            }
+        }
+
+        public int RangedAIDifficulty
+        {
+            get => _config.RangedAIDifficulty;
+            set
+            {
+                if (_config.RangedAIDifficulty == value)
+                    return;
+                _config.RangedAIDifficulty = value;
                 UpdateAgentProperties();
             }
         }
