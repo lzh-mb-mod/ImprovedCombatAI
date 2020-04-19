@@ -13,7 +13,7 @@ A mod that provides features about changing AI to the base mode [`Enhanced Missi
 
 - Be able to adjust combat AI level to any value between 0 and 100 directly.
 
-  - Then the weapon skill will be ignored when determine combat AI level, and all units will have the same combat AI level you have set.
+  - Then the weapon skill will be ignored when determining combat AI level, and all units will have the same combat AI level you have set.
 
 - Realistic blocking.
 

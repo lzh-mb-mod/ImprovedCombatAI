@@ -2,7 +2,7 @@
 <Module>
 	<Name value = "Enhanced Mission Change AI"/>
 	<Id value = "EnhancedMissionChangeAI"/>
-	<Version value = "e2.1.0"/>
+	<Version value = "e2.1.1"/>
 	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="false"/>
 	<DependedModules>

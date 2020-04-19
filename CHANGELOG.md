@@ -1,3 +1,7 @@
+## [e2.1.1] - 2020-04-19
+### Fixed
+- Fix UI bug.
+
 ## [e2.1.0] - 2020-04-19
 ### Added
 - Add melee and ranged AI difficulty options.

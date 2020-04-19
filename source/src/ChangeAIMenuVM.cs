@@ -82,14 +82,13 @@ namespace EnhancedMissionChangeAI
         public ChangeAIMenuVM(Action closeMenu)
             : base(closeMenu)
         {
-            this.ChangeMeleeAI = _changeBodyProperties?.ChangeMeleeAI ?? false;
             this.MeleeAIDifficulty = new NumericVM(MeleeAIDifficultyString, _changeBodyProperties?.MeleeAIDifficulty ?? 0, 0, 100, true,
                 difficulty =>
                 {
                     if (_changeBodyProperties == null)
                         return;
                     _changeBodyProperties.MeleeAIDifficulty = (int)difficulty;
-                });
+                }, 1, !ChangeMeleeAI);
             this.MeleeAI = new NumericVM(MeleeAIString, _changeBodyProperties?.MeleeAI ?? 0, 0, 100, true,
                 combatAI =>
                 {
@@ -97,14 +96,13 @@ namespace EnhancedMissionChangeAI
                         return;
                     _changeBodyProperties.MeleeAI = (int)combatAI;
                 }, 1, ChangeMeleeAI);
-            this.ChangeRangedAI = _changeBodyProperties?.ChangeRangedAI ?? false;
             this.RangedAIDifficulty = new NumericVM(RangedAIDifficultyString, _changeBodyProperties?.RangedAIDifficulty ?? 0, 0, 100, true,
                 difficulty =>
                 {
                     if (_changeBodyProperties == null)
                         return;
                     _changeBodyProperties.RangedAIDifficulty = (int) difficulty;
-                });
+                }, 1, !ChangeRangedAI);
             this.RangedAI = new NumericVM(RangedAIString, _changeBodyProperties?.RangedAI ?? 0, 0, 100, true,
                 combatAI =>
                 {
@@ -112,6 +110,8 @@ namespace EnhancedMissionChangeAI
                         return;
                     _changeBodyProperties.RangedAI = (int)combatAI;
                 }, 1, ChangeRangedAI);
+            this.ChangeMeleeAI = _changeBodyProperties?.ChangeMeleeAI ?? false;
+            this.ChangeRangedAI = _changeBodyProperties?.ChangeRangedAI ?? false;
         }
 
         public override void CloseMenu()
