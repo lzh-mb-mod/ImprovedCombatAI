@@ -1,8 +1,8 @@
 <Prefab>
   <Window>
-    <ButtonWidget Command.Click="CloseMenu" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" Brush="EnhancedMission.TransparentBrush">
+    <ButtonWidget Command.Click="CloseMenu" WidthSizePolicy = "StretchToParent" HeightSizePolicy = "StretchToParent" Brush="RTSCamera.TransparentBrush">
       <Children>
-        <ListPanel LayoutImp.LayoutMethod="VerticalBottomToTop" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" MarginTop="10" Brush="EnhancedMission.MissionMenuBrush">
+        <ListPanel LayoutImp.LayoutMethod="VerticalBottomToTop" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Center" MarginTop="10" Brush="RTSCamera.MissionMenuBrush">
           <Children>
 
             <ListPanel IsVisible="@EnableChangingBodyProperties" LayoutImp.LayoutMethod="HorizontalLeftToRight" WidthSizePolicy = "CoverChildren" HeightSizePolicy = "CoverChildren" HorizontalAlignment="Center" MarginTop="10">

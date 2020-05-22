@@ -1,21 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Helpers;
-using SandBox;
-using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 
-namespace EnhancedMissionChangeAI
+namespace ImprovedCombatAI
 {
-    public class EnhancedAgentStatCalculateModel : AgentStatCalculateModel
+    public class ImprovedCombatAIAgentStatCalculateModel : AgentStatCalculateModel
     {
         private readonly AgentStatCalculateModel _previousModel;
-        public EnhancedAgentStatCalculateModel(AgentStatCalculateModel previousModel)
+        public ImprovedCombatAIAgentStatCalculateModel(AgentStatCalculateModel previousModel)
         {
             _previousModel = previousModel;
         }

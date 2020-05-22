@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Module>
 	<Name value = "Improved Combat AI"/>
-	<Id value = "EnhancedMissionChangeAI"/>
+	<Id value = "ImprovedCombatAI"/>
 	<Version value = "e2.1.2"/>
 	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="false"/>
@@ -9,14 +9,13 @@
          <DependedModule Id="Native"/>
          <DependedModule Id="SandBoxCore"/>
          <DependedModule Id="Sandbox"/>
-		 <!-- RTS Camera -->
-         <DependedModule Id="EnhancedMission"/>
+         <DependedModule Id="RTSCamera"/>
 	</DependedModules>
 	<SubModules>
 		<SubModule>
-			<Name value = "EnhancedMissionChangeAISubModule"/>
-			<DLLName value = "EnhancedMissionChangeAI.dll"/>
-			<SubModuleClassType value = "EnhancedMissionChangeAI.EnhancedMissionChangeAISubModule"/>
+			<Name value = "ImprovedCombatAISubModule"/>
+			<DLLName value = "ImprovedCombatAI.dll"/>
+			<SubModuleClassType value = "ImprovedCombatAI.ImprovedCombatAISubModule"/>
 			<Tags>
 				<Tag key="DedicatedServerType" value ="none" />
 				<Tag key="IsNoRenderModeElement" value ="false" />

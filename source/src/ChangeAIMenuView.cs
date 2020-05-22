@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EnhancedMission;
-using TaleWorlds.Core;
-using TaleWorlds.Engine.GauntletUI;
-using TaleWorlds.Engine.Screens;
-using TaleWorlds.GauntletUI.Data;
-using TaleWorlds.InputSystem;
-using TaleWorlds.MountAndBlade;
+﻿using RTSCamera;
 
-namespace EnhancedMissionChangeAI
+namespace ImprovedCombatAI
 {
     public class ChangeAIMenuView : MissionMenuViewBase
     {

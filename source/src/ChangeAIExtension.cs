@@ -1,13 +1,11 @@
-﻿using System;
+﻿using RTSCamera;
 using System.Collections.Generic;
-using System.Text;
-using EnhancedMission;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
-namespace EnhancedMissionChangeAI
+namespace ImprovedCombatAI
 {
-    class ChangeAIExtension : EnhancedMissionExtension
+    class ChangeAIExtension : RTSCameraExtension
     {
         public override void OpenModMenu(Mission mission)
         {

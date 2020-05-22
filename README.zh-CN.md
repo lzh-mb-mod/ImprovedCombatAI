@@ -29,7 +29,7 @@
   下面是来自官方的b0.8.1补丁的描述：
   > "Actual defence starting moment after clicking the defend key now relies on a directional distance to the target direction instead of animation progression."
 
-- 保存配置：保存配置的文件夹为`(user directory)\Documents\Mount and Blade II Bannerlord\Configs\EnhancedMission\`
+- 保存配置：保存配置的文件夹为`(user directory)\Documents\Mount and Blade II Bannerlord\Configs\RTSCamera\`
 
   配置保存在文件`ChangeAIConfig.xml`中。
 

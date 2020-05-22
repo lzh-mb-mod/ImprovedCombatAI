@@ -1,6 +1,8 @@
-## [e2.1.2] - 2020-04-7
+## [e2.1.2] - 2020-05-23
 ### Changed
 - Change UI description.
+
+- Rename folder.
 
 ## [e2.1.1] - 2020-04-19
 ### Fixed

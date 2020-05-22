@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RTSCamera;
+using System;
 using System.Xml.Serialization;
-using EnhancedMission;
 
-namespace EnhancedMissionChangeAI
+namespace ImprovedCombatAI
 {
-    public class ChangeAIConfig : EnhancedMissionConfigBase<ChangeAIConfig>
+    public class ChangeAIConfig : RTSCameraConfigBase<ChangeAIConfig>
     {
         protected static Version BinaryVersion => new Version(1, 0);
 

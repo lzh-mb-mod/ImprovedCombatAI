@@ -29,7 +29,7 @@ A mod that provides features about changing AI to the base mode [`RTS Camera`](h
   Here is the description from official patch note b0.8.1:
   > "Actual defence starting moment after clicking the defend key now relies on a directional distance to the target direction instead of animation progression."
 
-- Configuration saving. The configuration is saved in directory `(user directory)\Documents\Mount and Blade II Bannerlord\Configs\EnhancedMission\`.
+- Configuration saving. The configuration is saved in directory `(user directory)\Documents\Mount and Blade II Bannerlord\Configs\RTSCamera\`.
   
   The config file is saved in file `ChangeAIConfig.xml`.
 

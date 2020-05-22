@@ -1,8 +1,6 @@
-﻿using System;
-using EnhancedMission;
-using TaleWorlds.MountAndBlade;
+﻿using TaleWorlds.MountAndBlade;
 
-namespace EnhancedMissionChangeAI
+namespace ImprovedCombatAI
 {
     public class ChangeBodyProperties
     {

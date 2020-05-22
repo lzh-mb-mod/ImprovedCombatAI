@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EnhancedMission;
+﻿using RTSCamera;
+using System;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 
-namespace EnhancedMissionChangeAI
+namespace ImprovedCombatAI
 {
     public class ChangeAIMenuVM : MissionMenuVMBase
     {
