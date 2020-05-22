@@ -1,5 +1,6 @@
 ﻿using RTSCamera;
 using System;
+using System.IO;
 using System.Xml.Serialization;
 
 namespace ImprovedCombatAI
@@ -73,8 +74,12 @@ namespace ImprovedCombatAI
             CopyFrom(CreateDefault());
         }
 
-        protected override string SaveName => SavePath + nameof(ChangeAIConfig) + ".xml";
-        protected override string[] OldNames { get; } = { "MoreOptionsConfig.xml" };
+        protected override string SaveName => Path.Combine(SavePath, nameof(ChangeAIConfig) + ".xml");
+        protected override string[] OldNames { get; } =
+        {
+            Path.Combine(OldSavePath, "MoreOptionsConfig.xml"),
+            Path.Combine(OldSavePath, "ChangeAIConfig.xml"),
+        };
 
     }
 }
