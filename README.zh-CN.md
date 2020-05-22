@@ -1,19 +1,23 @@
-# Enhanced Mission Change AI
-
-这是一个为基础mod[`Enhanced Mission RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355)提供改变AI的功能的mod。
+# Improved Combat AI
+(旧名：Change AI)
+这是一个为基础mod[`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355)提供改变AI的功能的mod。
 
 ## 功能
 - 在0到100之间调整战斗AI难度（包括近战AI或远程AI）。
 
-  - 默认情况下士兵的战斗AI等级取决于每个士兵的武器熟练度。350及以上的熟练度时士兵的战斗AI等级为100，此时AI表现最好。
+  -  战斗AI等级决定了士兵AI的战斗表现。
 
-  - 在本mod中，战斗AI难度会额外加入到战斗AI等级中。
+  - 默认情况下士兵的战斗AI等级取决于每个士兵的武器熟练度：战斗AI等级等于武器熟练度除以3.5。
+
+  - 所以350熟练度的士兵的战斗AI等级为最高的100。
+
+  - 在本mod中，每个士兵的战斗AI等级会被加上等于战斗AI难度的数值。
 
   - 比如，加入一个士兵有100的单手熟练度，当他使用单手武器时，默认情况下，他的近战AI等级为100 / 350 * 100 = 28.57。如果你把近战AI难度调整为50， 那么他的近战AI等级就会是50 + 28.57 = 78.57。
 
 - 调整战斗AI等级：你可以直接将战斗AI等级在0-100间调整。
 
-  - 之后在决定战斗等级时，武器熟练度会被忽略。所有单位都会有你设置好的相同的战斗AI。
+  - 之后在决定战斗AI等级时，武器熟练度会被忽略。所有单位都会有你设置好的相同的战斗AI。
 
 - 可选择更真实的格挡：一种更慢的格挡方式，解决了格挡时武器瞬间移动的问题。
 
@@ -32,18 +36,20 @@
   你可以修改配置，但如果你编辑有误或配置文件被移除，配置会被初始化为默认内容。
 
 ## 前置要求
-- [`Enhanced Mission RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355)
+- [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355)
 
 ## 如何安装
-1. 请先下载安装前置mod[`Enhanced Mission RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355)。
+1. 请先下载安装前置mod[`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355)。
 
 2. 复制`Modules`文件夹到砍二的安装目录下（例如`C:\Program Files\Steam\steamapps\common\Mount & Blade II Bannerlord - Beta`)，和砍二本体的Modules文件夹合并。
+   
+   或者你可以使用Vortex来自动安装。
 
 ## 加载顺序
-- `Enhanced Mission Change AI`的加载顺序应当在`Enhanced Mission RTS Camera`之后。
+- `Change AI`的加载顺序应当在`RTS Camera`之后。
 
 ## 如何使用
-- 启动游戏启动器，并选择单人模式(Singleplayer)。在Mods选项卡中勾选`Enhanced Mission RTS Camera`和`Enhanced Mission Change AI`并点击`Play`。
+- 启动游戏启动器，并选择单人模式(Singleplayer)。在Mods选项卡中勾选`RTS Camera`和`Change AI`并点击`Play`。
 
   之后正常进行游戏。
 

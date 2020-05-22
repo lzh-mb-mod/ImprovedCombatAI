@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Module>
-	<Name value = "Enhanced Mission Change AI"/>
+	<Name value = "Improved Combat AI"/>
 	<Id value = "EnhancedMissionChangeAI"/>
-	<Version value = "e2.1.1"/>
+	<Version value = "e2.1.2"/>
 	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="false"/>
 	<DependedModules>
          <DependedModule Id="Native"/>
          <DependedModule Id="SandBoxCore"/>
          <DependedModule Id="Sandbox"/>
+		 <!-- RTS Camera -->
          <DependedModule Id="EnhancedMission"/>
 	</DependedModules>
 	<SubModules>

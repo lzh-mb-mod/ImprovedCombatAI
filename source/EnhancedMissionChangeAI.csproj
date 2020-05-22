@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
 	  <ProcessorArchitecture>amd64</ProcessorArchitecture>
 	  <BinPath>C:\game\SteamLibrary\steamapps\common\Mount &amp; Blade II Bannerlord\</BinPath>
+	  <LangVersion>8</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -114,6 +115,9 @@
     </Reference>
     <Reference Include="TaleWorlds.NavigationSystem">
       <HintPath>..\..\..\..\bin\Win64_Shipping_Client\TaleWorlds.NavigationSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="TaleWorlds.ObjectSystem">
+      <HintPath>..\..\..\..\bin\Win64_Shipping_Client\TaleWorlds.ObjectSystem.dll</HintPath>
     </Reference>
   </ItemGroup>
 

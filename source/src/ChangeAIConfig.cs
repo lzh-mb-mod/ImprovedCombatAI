@@ -28,9 +28,9 @@ namespace EnhancedMissionChangeAI
 
         public bool UseRealisticBlocking = false;
 
-        public int MeleeAIDifficulty = 0;
+        public int MeleeAIDifficulty = 50;
 
-        public int RangedAIDifficulty = 0;
+        public int RangedAIDifficulty = 50;
 
         public bool ChangeMeleeAI = false;
 

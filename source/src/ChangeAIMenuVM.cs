@@ -11,15 +11,15 @@ namespace EnhancedMissionChangeAI
     {
         private readonly ChangeBodyProperties _changeBodyProperties = ChangeBodyProperties.Get();
 
-        public string UseRealisticBlockingString { get; } = GameTexts.FindText("str_use_realistic_blocking").ToString();
+        public string UseRealisticBlockingString { get; } = GameTexts.FindText("str_em_use_realistic_blocking").ToString();
 
-        public string MeleeAIDifficultyString { get; } = GameTexts.FindText("str_melee_ai_difficulty").ToString();
-        public string ChangeMeleeAIString { get; } = GameTexts.FindText("str_change_melee_ai").ToString();
-        public string MeleeAIString { get; } = GameTexts.FindText("str_melee_ai").ToString();
+        public string MeleeAIDifficultyString { get; } = GameTexts.FindText("str_em_melee_ai_difficulty").ToString();
+        public string ChangeMeleeAIString { get; } = GameTexts.FindText("str_em_change_melee_ai").ToString();
+        public string MeleeAIString { get; } = GameTexts.FindText("str_em_melee_ai").ToString();
 
-        public string RangedAIDifficultyString { get; } = GameTexts.FindText("str_ranged_ai_difficulty").ToString();
-        public string ChangeRangedAIString { get; } = GameTexts.FindText("str_change_ranged_ai").ToString();
-        public string RangedAIString { get; } = GameTexts.FindText("str_ranged_ai").ToString();
+        public string RangedAIDifficultyString { get; } = GameTexts.FindText("str_em_ranged_ai_difficulty").ToString();
+        public string ChangeRangedAIString { get; } = GameTexts.FindText("str_em_change_ranged_ai").ToString();
+        public string RangedAIString { get; } = GameTexts.FindText("str_em_ranged_ai").ToString();
 
 
         [DataSourceProperty] public bool EnableChangingBodyProperties => _changeBodyProperties != null;

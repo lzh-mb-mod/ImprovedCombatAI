@@ -2,15 +2,15 @@
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
   <strings>
-    <string id="str_extension_change_ai" text="{=EnhancedMission_extensionchangeai}Extension: Change AI" />
-    <string id="str_use_realistic_blocking" text="{=EnhancedMission_userealisticblocking}Use Realistic Blocking" />
+    <string id="str_extension_change_ai" text="{=EnhancedMission_extensionchangeai}Extension: Improved Combat AI" />
+    <string id="str_em_use_realistic_blocking" text="{=EnhancedMission_userealisticblocking}Use Realistic Blocking" />
 
-    <string id="str_melee_ai_difficulty" text="{=EnhancedMission_meleeaidifficulty}Melee AI Difficulty" />
-    <string id="str_change_melee_ai" text="{=EnhancedMission_changemeleeai}Change Melee AI" />
-    <string id="str_melee_ai" text="{=EnhancedMission_meleeai}Melee AI(0-100)" />
+    <string id="str_em_melee_ai_difficulty" text="{=EnhancedMission_meleeaidifficulty}Melee AI Difficulty" />
+    <string id="str_em_change_melee_ai" text="{=EnhancedMission_changemeleeai}Set Melee AI Level" />
+    <string id="str_em_melee_ai" text="{=EnhancedMission_meleeai}Melee AI Level(0-100)" />
 
-    <string id="str_ranged_ai_difficulty" text="{=EnhancedMission_rangeaidifficulty}Ranged AI Difficulty" />
-    <string id="str_change_ranged_ai" text="{=EnhancedMission_changerangedai}Change Ranged AI" />
-    <string id="str_ranged_ai" text="{=EnhancedMission_rangedai}Ranged AI(0-100)" />
+    <string id="str_em_ranged_ai_difficulty" text="{=EnhancedMission_rangeaidifficulty}Ranged AI Difficulty" />
+    <string id="str_em_change_ranged_ai" text="{=EnhancedMission_changerangedai}Set Ranged AI Level" />
+    <string id="str_em_ranged_ai" text="{=EnhancedMission_rangedai}Ranged AI Level(0-100)" />
   </strings>
 </base>

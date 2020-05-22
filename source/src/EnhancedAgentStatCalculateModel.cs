@@ -14,10 +14,7 @@ namespace EnhancedMissionChangeAI
 {
     public class EnhancedAgentStatCalculateModel : AgentStatCalculateModel
     {
-        private AgentStatCalculateModel _previousModel;
-
-        public EnhancedAgentStatCalculateModel()
-        { }
+        private readonly AgentStatCalculateModel _previousModel;
         public EnhancedAgentStatCalculateModel(AgentStatCalculateModel previousModel)
         {
             _previousModel = previousModel;

@@ -1,3 +1,7 @@
+## [e2.1.2] - 2020-04-7
+### Changed
+- Change UI description.
+
 ## [e2.1.1] - 2020-04-19
 ### Fixed
 - Fix UI bug.

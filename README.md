@@ -1,13 +1,17 @@
-# Enhanced Mission Change AI
-
-A mod that provides features about changing AI to the base mode [`Enhanced Mission RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355).
+# Improved Combat AI
+(Old name: Enhanced Mission Change AI)
+A mod that provides features about changing AI to the base mode [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355).
 
 ## Features
 - Adjust combat(melee or ranged) AI difficulty between 0 and 100.
 
-  - By default combat AI level is determined by the weapon skill of soldiers. Soldier with weapon skill of 350 has 100 combat AI level and performs best when using corresponding weapon.
+  - Combat AI level is a value in the game used to determine the soldier's combat ability.
 
-  - In this mod, combat AI difficulty is added to combat AI level.
+  - By default combat AI level is determined by the weapon skill of soldiers: the combat level are equal to his weapon skill divided by 3.5.
+
+  - So soldier with weapon skill of 350 has the highest 100 combat AI level when using corresponding weapon.
+
+  - In this mod, combat AI level is increased by the value of melee or ranged AI difficulty, which you can adjust.
 
   - For example, if a soldier has 100 one-handed weapon skill, and when he uses one-handed weapon, by default his melee AI level is 100 / 350 * 100 = 28.57. If you adjust melee AI difficulty to 50, then his melee AI level will be 50 + 28.57 = 78.57.
 
@@ -32,24 +36,24 @@ A mod that provides features about changing AI to the base mode [`Enhanced Missi
   You can modify them manually, but if you edit it incorrectly or remove them, the configuration will be reset to default.
 
 ## Prerequisite
-- [`Enhanced Mission RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355)
+- [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355)
 
 ## How to install
-1. Please download and install the prerequisite mod [`Enhanced Mission RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355) first.
+1. Please download and install the prerequisite mod [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355) first.
 
-2. Copy `Modules` folder into Bannerlord installation folder(For example `C:\Program Files\Steam\steamapps\common\Mount & Blade II Bannerlord - Beta`). It should be merged with `Modules` of the game.
+2. Copy `Modules` folder into Bannerlord installation folder(For example `C:\Program Files\Steam\steamapps\common\Mount & Blade II Bannerlord - Beta`). It should be merged with `Modules` of the game. Or use Vortex to install it automatically.
 
 ## Loading sequence requirement
-- `Enhanced Mission Change AI` should be loaded after `Enhanced Mission RTS Camera`.
+- `Improved Combat AI` should be loaded after `RTS Camera`.
 
 ## How to use
-- Start the launcher and choose Single player mode. In `Mods` panel select `EnhancedMission RTS Camera` and `EnhancedMission Change AI`, then click `PLAY`.
+- Start the launcher and choose Single player mode. In `Mods` panel select `RTS Camera` and `Improved Combat AI`, then click `PLAY`.
 
   Then play the game as usual.
 
 - After entering a mission (scene):
 
-  - Press `O(letter)` (by default) and then click `Extension: Change AI` to open menu of this mod. You can access the options of this mod in it.
+  - Press `O(letter)` (by default) and then click `Extension: Improved Combat AI` to open menu of this mod. You can access the options of this mod in it.
 
 ## Troubleshoot
 - If the launcher can not start:
