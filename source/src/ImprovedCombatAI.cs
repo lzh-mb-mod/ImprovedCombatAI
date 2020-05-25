@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace ImprovedCombatAI
 {
-    public class ChangeAIConfig : RTSCameraConfigBase<ChangeAIConfig>
+    public class ImprovedCombatAI : RTSCameraConfigBase<ImprovedCombatAI>
     {
         protected static Version BinaryVersion => new Version(1, 0);
 
@@ -22,7 +22,7 @@ namespace ImprovedCombatAI
                     break;
             }
         }
-        private static ChangeAIConfig _instance;
+        private static ImprovedCombatAI _instance;
         public string ConfigVersion { get; set; } = BinaryVersion.ToString();
 
         public bool UseRealisticBlocking = false;
@@ -37,13 +37,13 @@ namespace ImprovedCombatAI
 
         public int MeleeAI = 100;
         public int RangedAI = 100;
-        private static ChangeAIConfig CreateDefault()
+        private static ImprovedCombatAI CreateDefault()
         {
-            return new ChangeAIConfig();
+            return new ImprovedCombatAI();
         }
 
 
-        public static ChangeAIConfig Get()
+        public static ImprovedCombatAI Get()
         {
             if (_instance == null)
             {
@@ -54,10 +54,10 @@ namespace ImprovedCombatAI
             return _instance;
         }
 
-        protected override XmlSerializer serializer => new XmlSerializer(typeof(ChangeAIConfig));
+        protected override XmlSerializer serializer => new XmlSerializer(typeof(ImprovedCombatAI));
 
 
-        protected override void CopyFrom(ChangeAIConfig other)
+        protected override void CopyFrom(ImprovedCombatAI other)
         {
             ConfigVersion = other.ConfigVersion;
             UseRealisticBlocking = other.UseRealisticBlocking;
@@ -74,11 +74,12 @@ namespace ImprovedCombatAI
             CopyFrom(CreateDefault());
         }
 
-        protected override string SaveName => Path.Combine(SavePath, nameof(ChangeAIConfig) + ".xml");
+        protected override string SaveName => Path.Combine(SavePath, nameof(ImprovedCombatAI) + ".xml");
         protected override string[] OldNames { get; } =
         {
             Path.Combine(OldSavePath, "MoreOptionsConfig.xml"),
             Path.Combine(OldSavePath, "ChangeAIConfig.xml"),
+            SavePath + "ChangeAIConfig.xml",
         };
 
     }

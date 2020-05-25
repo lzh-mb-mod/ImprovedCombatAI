@@ -1,3 +1,7 @@
+## [e2.1.4] - 2020-05-25
+### Fixed
+- Fix config save path.
+
 ## [e2.1.3] - 2020-05-23
 ### Fixed
 - Fix config save path.

@@ -2,6 +2,7 @@
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
+using MathF = TaleWorlds.Library.MathF;
 
 namespace ImprovedCombatAI
 {
@@ -88,7 +89,7 @@ namespace ImprovedCombatAI
                 missionWeapon = equipment[offHandItemIndex];
                 offHandWeapon = missionWeapon.CurrentUsageItem;
             }
-            var config = ChangeAIConfig.Get();
+            var config = ImprovedCombatAI.Get();
             float meleeAILevel;
             if (config.ChangeMeleeAI)
             {

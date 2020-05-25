@@ -5,7 +5,7 @@ namespace ImprovedCombatAI
     public class ChangeBodyProperties
     {
         private static ChangeBodyProperties _instance;
-        private ChangeAIConfig _config;
+        private ImprovedCombatAI _config;
 
         public static ChangeBodyProperties Get()
         {
@@ -15,7 +15,7 @@ namespace ImprovedCombatAI
         }
         private ChangeBodyProperties()
         {
-            _config = ChangeAIConfig.Get();
+            _config = ImprovedCombatAI.Get();
         }
 
         public void SaveConfig()
