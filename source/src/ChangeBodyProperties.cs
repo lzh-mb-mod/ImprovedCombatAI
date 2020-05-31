@@ -103,6 +103,15 @@ namespace ImprovedCombatAI
                 UpdateAgentProperties();
             }
         }
+        public float RangedError
+        {
+            get => _config.RangedError;
+            set
+            {
+                _config.RangedError = value;
+                UpdateAgentProperties();
+            }
+        }
 
         private void UpdateAgentProperties()
         {

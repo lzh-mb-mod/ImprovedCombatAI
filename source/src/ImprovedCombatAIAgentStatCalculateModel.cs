@@ -1,4 +1,5 @@
 ﻿using System;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -160,8 +161,8 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiChargeHorsebackTargetDistFactor = (float)(1.5 * (3.0 - (double)meleeAILevel));
             agentDrivenProperties.AiWaitBeforeShootFactor = agent._propertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * (double)rangedAILevel);
             float num3 = 1f - rangedAILevel;
-            agentDrivenProperties.AiRangerLeadErrorMin = (float)(-(double)num3 * 0.349999994039536);
-            agentDrivenProperties.AiRangerLeadErrorMax = num3 * 0.2f;
+            agentDrivenProperties.AiRangerLeadErrorMin = (float)(-(double)num3 * 0.349999994039536) + config.RangedError;
+            agentDrivenProperties.AiRangerLeadErrorMax = num3 * 0.2f + config.RangedError;
             agentDrivenProperties.AiRangerVerticalErrorMultiplier = num3 * 0.1f;
             agentDrivenProperties.AiRangerHorizontalErrorMultiplier = num3 * ((float)Math.PI / 90f);
             agentDrivenProperties.AIAttackOnDecideChance = MathF.Clamp((float)(0.230000004172325 * (double)this.CalculateAIAttackOnDecideMaxValue() * (3.0 - (double)agent.Defensiveness)), 0.05f, 1f);

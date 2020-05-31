@@ -1,3 +1,9 @@
+# Change Log
+
+## [e2.1.5] - 2020-06-01
+### Added
+- Add Ranged AI lead error option. It's used to aim moving targets.
+
 ## [e2.1.4] - 2020-05-25
 ### Fixed
 - Fix config save path.

@@ -37,6 +37,8 @@ namespace ImprovedCombatAI
 
         public int MeleeAI = 100;
         public int RangedAI = 100;
+
+        public float RangedError = 0;
         private static ImprovedCombatAI CreateDefault()
         {
             return new ImprovedCombatAI();
@@ -67,6 +69,7 @@ namespace ImprovedCombatAI
             ChangeRangedAI = other.ChangeRangedAI;
             MeleeAI = other.MeleeAI;
             RangedAI = other.RangedAI;
+            RangedError = other.RangedError;
         }
 
         public override void ResetToDefault()

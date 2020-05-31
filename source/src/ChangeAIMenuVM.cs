@@ -77,6 +77,9 @@ namespace ImprovedCombatAI
         [DataSourceProperty]
         public NumericVM RangedAI { get; }
 
+        [DataSourceProperty]
+        public NumericVM RangedError { get; }
+
         public ChangeAIMenuVM(Action closeMenu)
             : base(closeMenu)
         {
@@ -110,6 +113,13 @@ namespace ImprovedCombatAI
                 }, 1, ChangeRangedAI);
             this.ChangeMeleeAI = _changeBodyProperties?.ChangeMeleeAI ?? false;
             this.ChangeRangedAI = _changeBodyProperties?.ChangeRangedAI ?? false;
+            this.RangedError = new NumericVM(GameTexts.FindText("str_em_lead_error").ToString(), _changeBodyProperties?.RangedError ?? 0, 0, 0.5f, false,
+                rangedError =>
+                {
+                    if (_changeBodyProperties == null)
+                        return;
+                    _changeBodyProperties.RangedError = rangedError;
+                }, 100, true);
         }
 
         public override void CloseMenu()

@@ -3,7 +3,7 @@
 A mod that provides features about changing AI to the base mode [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355).
 
 ## Features
-- Adjust combat(melee or ranged) AI difficulty between 0 and 100.
+- Improve combat(melee or ranged) AI level between 0 and 100.
 
   - Combat AI level is a value in the game used to determine the soldier's combat ability.
 
@@ -11,13 +11,15 @@ A mod that provides features about changing AI to the base mode [`RTS Camera`](h
 
   - So soldier with weapon skill of 350 has the highest 100 combat AI level when using corresponding weapon.
 
-  - In this mod, combat AI level is increased by the value of melee or ranged AI difficulty, which you can adjust.
+  - In this mod, combat AI level is increased by the value you set.
 
-  - For example, if a soldier has 100 one-handed weapon skill, and when he uses one-handed weapon, by default his melee AI level is 100 / 350 * 100 = 28.57. If you adjust melee AI difficulty to 50, then his melee AI level will be 50 + 28.57 = 78.57.
+  - For example, if a soldier has 100 one-handed weapon skill, and when he uses one-handed weapon, by default his melee AI level is 100 / 350 * 100 = 28.57. If you the "Improve Melee Level" is set to 50, then his melee AI level will be 50 + 28.57 = 78.57.
 
 - Be able to adjust combat AI level to any value between 0 and 100 directly.
 
   - Then the weapon skill will be ignored when determining combat AI level, and all units will have the same combat AI level you have set.
+
+- Adjust ranged lead error. The value is used when aiming moving targets. 0.2-0.3 is the best value as I tested. Set this between 0.2-0.3 so your archer can hit the enemy horse archer.
 
 - Realistic blocking.
 
