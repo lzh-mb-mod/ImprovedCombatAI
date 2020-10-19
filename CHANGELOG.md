@@ -5,7 +5,7 @@
 - Keep compatible with RTS Camera e3.9.3.
 
 ### Changed
-- Change mechenism in determining AI level.
+- Change mechanism in determining AI level.
 
 ## [e2.1.5] - 2020-06-01
 ### Added
