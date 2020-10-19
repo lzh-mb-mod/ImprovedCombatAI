@@ -1,5 +1,12 @@
 # Change Log
 
+## [e2.2.0] - 2020-10-19
+### Fixed
+- Keep compatible with RTS Camera e3.9.3.
+
+### Changed
+- Change mechenism in determining AI level.
+
 ## [e2.1.5] - 2020-06-01
 ### Added
 - Add Ranged AI lead error option. It's used to aim moving targets.

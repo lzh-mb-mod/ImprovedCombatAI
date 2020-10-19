@@ -1,4 +1,4 @@
-﻿using RTSCamera;
+﻿using RTSCamera.View.Basic;
 
 namespace ImprovedCombatAI
 {

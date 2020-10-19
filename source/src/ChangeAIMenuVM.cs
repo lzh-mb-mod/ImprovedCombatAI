@@ -1,4 +1,4 @@
-﻿using RTSCamera;
+﻿using RTSCamera.View.Basic;
 using System;
 using TaleWorlds.Core;
 using TaleWorlds.Library;

@@ -1,4 +1,5 @@
 ﻿using RTSCamera;
+using RTSCamera.Config.Basic;
 using System;
 using System.IO;
 using System.Xml.Serialization;

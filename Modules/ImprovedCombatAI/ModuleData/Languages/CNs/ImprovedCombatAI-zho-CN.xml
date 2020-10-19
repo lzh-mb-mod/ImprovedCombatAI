@@ -8,11 +8,11 @@
     <string id="ImprovedCombatAI_extensionchangeai" text="扩展：改进的战斗AI" />
     <string id="ImprovedCombatAI_userealisticblocking" text="更真实的格挡机制" />
 
-    <string id="ImprovedCombatAI_meleeaidifficulty" text="提高近战AI等级" />
+    <string id="ImprovedCombatAI_meleeaidifficulty" text="近战AI难度" />
     <string id="ImprovedCombatAI_changemeleeai" text="设置近战AI等级" />
     <string id="ImprovedCombatAI_meleeai" text="近战AI等级（0-100）" />
 
-    <string id="ImprovedCombatAI_rangeaidifficulty" text="提高远程AI等级" />
+    <string id="ImprovedCombatAI_rangeaidifficulty" text="远程AI难度" />
     <string id="ImprovedCombatAI_changerangedai" text="设置远程AI等级" />
     <string id="ImprovedCombatAI_rangedai" text="远程AI等级（0-100）" />
 
