@@ -4,7 +4,7 @@
 ### Fixed
 - Remove RTS Camera from dependency.
 
-- Keep compatible with Bannerlord e1.5.7
+- Keep compatible with Bannerlord e1.5.7 and Bannerlord e1.5.8.
 
 ## [e2.2.0] - 2020-10-19
 ### Fixed

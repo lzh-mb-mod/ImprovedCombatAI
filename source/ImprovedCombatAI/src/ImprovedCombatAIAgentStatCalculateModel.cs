@@ -34,11 +34,11 @@ namespace ImprovedCombatAI
             return _previousModel?.GetDifficultyModifier() ?? 0;
         }
 
-        public override void AddExtraAmmo(Agent agent)
+        public override void InitializeMissionEquipment(Agent agent)
         {
-            base.AddExtraAmmo(agent);
+            base.InitializeMissionEquipment(agent);
 
-            _previousModel?.AddExtraAmmo(agent);
+            _previousModel?.InitializeMissionEquipment(agent);
         }
 
         public override float GetEffectiveMaxHealth(Agent agent)
