@@ -3,10 +3,7 @@ using MissionLibrary.View;
 using MissionSharedLibrary.Provider;
 using MissionSharedLibrary.View.ViewModelCollection;
 using MissionSharedLibrary.View.ViewModelCollection.Options;
-using MissionSharedLibrary.View.ViewModelCollection.Options.Selection;
 using TaleWorlds.Core;
-using TaleWorlds.GauntletUI;
-using TaleWorlds.MountAndBlade;
 
 namespace ImprovedCombatAI.Config
 {
