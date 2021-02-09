@@ -19,7 +19,7 @@ namespace ImprovedCombatAI.Config
                 var optionClass = new OptionClass(ImprovedCombatAISubModule.ModuleId,
                     GameTexts.FindText("str_improved_combat_ai_option_class"), menuClassCollection);
 
-                var optionCategory = new OptionCategory("CombatAI", GameTexts.FindText("str_battle_mini_map_map_options"));
+                var optionCategory = new OptionCategory("CombatAI", GameTexts.FindText("str_improved_combat_ai_ai_options"));
                 optionCategory.AddOption(new BoolOptionViewModel(
                     GameTexts.FindText("str_improved_combat_ai_use_realistic_blocking"), null,
                     () => ImprovedCombatAIConfig.Get().UseRealisticBlocking,
