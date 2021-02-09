@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
-using MissionSharedLibrary.Config;
+﻿using MissionSharedLibrary.Config;
 using MissionSharedLibrary.Utilities;
+using System;
+using System.IO;
 using TaleWorlds.MountAndBlade;
 
 namespace ImprovedCombatAI.Config

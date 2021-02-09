@@ -1,9 +1,7 @@
-﻿using System.Linq;
-using ImprovedCombatAI.Config;
-using MissionLibrary;
-using MissionLibrary.Controller;
+﻿using ImprovedCombatAI.Config;
 using MissionLibrary.View;
 using MissionSharedLibrary;
+using System.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
