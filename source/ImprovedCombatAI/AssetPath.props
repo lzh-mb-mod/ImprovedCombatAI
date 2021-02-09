@@ -1,0 +1,7 @@
+<Project>
+	<PropertyGroup>
+		<PackagePath>$(SolutionDir)package\</PackagePath>
+		<ModuleAlias>ImprovedCombatAI</ModuleAlias>
+		<ModulePackagePath>$(PackagePath)$(ModuleAlias)\</ModulePackagePath>
+	</PropertyGroup>
+</Project>

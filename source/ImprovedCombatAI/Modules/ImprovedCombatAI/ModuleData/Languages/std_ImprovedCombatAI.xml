@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+  <tags>
+    <tag language="English" />
+  </tags>
+  <strings>
+    <string id="ImprovedCombatAI_option_class" text="Improved Combat AI" />
+    <string id="ImprovedCombatAI_ai_options" text="AI options" />
+
+    <string id="ImprovedCombatAI_use_realistic_blocking" text="Use Realistic Blocking" />
+
+    <string id="ImprovedCombatAI_melee_ai_difficulty" text="Melee AI Difficulty" />
+    <string id="ImprovedCombatAI_directly_set_melee_ai" text="Directly Set Melee AI Level" />
+    <string id="ImprovedCombatAI_directly_set_melee_ai_description" text="The melee AI level of all units will be set to the same value given in the difficulty option above." />
+
+
+    <string id="ImprovedCombatAI_range_ai_difficulty" text="Ranged AI Difficulty" />
+    <string id="ImprovedCombatAI_directly_set_ranged_ai" text="Directly Set Melee AI Level" />
+    <string id="ImprovedCombatAI_directly_set_ranged_ai_description" text="The ranged AI level of all units will be set to the same value given in the difficulty option above." />
+
+    <string id="ImprovedCombatAI_lead_error" text="Ranged AI Lead Error(0.2-0.3 are the best)" />
+  </strings>
+</base>

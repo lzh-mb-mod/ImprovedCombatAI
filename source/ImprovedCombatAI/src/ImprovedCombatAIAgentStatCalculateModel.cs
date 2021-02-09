@@ -1,4 +1,5 @@
 ﻿using System;
+using ImprovedCombatAI.Config;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
@@ -32,27 +33,67 @@ namespace ImprovedCombatAI
         {
             return _previousModel?.GetDifficultyModifier() ?? 0;
         }
-        private int GetWeaponSkill(BasicCharacterObject character, WeaponComponentData equippedItem)
+
+        public override void AddExtraAmmo(Agent agent)
         {
-            SkillObject skill = DefaultSkills.Athletics;
-            if (equippedItem != null)
-                skill = equippedItem.RelevantSkill;
-            return character.GetSkillValue(skill);
+            base.AddExtraAmmo(agent);
+
+            _previousModel?.AddExtraAmmo(agent);
         }
 
-        private int GetMeleeSkill(
-            BasicCharacterObject character,
-            WeaponComponentData equippedItem,
-            WeaponComponentData secondaryItem)
+        public override float GetEffectiveMaxHealth(Agent agent)
         {
-            SkillObject skill = DefaultSkills.Athletics;
-            if (equippedItem != null)
-            {
-                SkillObject relevantSkill = equippedItem.RelevantSkill;
-                skill = relevantSkill == DefaultSkills.OneHanded || relevantSkill == DefaultSkills.Polearm ? relevantSkill : (relevantSkill != DefaultSkills.TwoHanded ? DefaultSkills.OneHanded : (secondaryItem == null ? DefaultSkills.TwoHanded : DefaultSkills.OneHanded));
-            }
-            return character.GetSkillValue(skill);
+            return _previousModel?.GetEffectiveMaxHealth(agent) ?? base.GetEffectiveMaxHealth(agent);
         }
+
+        public override int GetEffectiveSkill(BasicCharacterObject agentCharacter, IAgentOriginBase agentOrigin, Formation agentFormation,
+            SkillObject skill)
+        {
+            return _previousModel?.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill) ??
+                   base.GetEffectiveSkill(agentCharacter, agentOrigin, agentFormation, skill);
+        }
+
+        public override float GetInteractionDistance(Agent agent)
+        {
+            return _previousModel?.GetInteractionDistance(agent) ?? base.GetInteractionDistance(agent);
+        }
+
+        public override float GetMaxCameraZoom(Agent agent)
+        {
+            return _previousModel?.GetMaxCameraZoom(agent) ?? base.GetMaxCameraZoom(agent);
+        }
+
+        public override string GetMissionDebugInfoForAgent(Agent agent)
+        {
+            return _previousModel?.GetMissionDebugInfoForAgent(agent) ?? base.GetMissionDebugInfoForAgent(agent);
+        }
+
+        public override float GetWeaponInaccuracy(Agent agent, WeaponComponentData weapon, int weaponSkill)
+        {
+            return _previousModel?.GetWeaponInaccuracy(agent, weapon, weaponSkill) ?? base.GetWeaponInaccuracy(agent, weapon, weaponSkill);
+        }
+
+        //private int GetWeaponSkill(BasicCharacterObject character, WeaponComponentData equippedItem)
+        //{
+        //    SkillObject skill = DefaultSkills.Athletics;
+        //    if (equippedItem != null)
+        //        skill = equippedItem.RelevantSkill;
+        //    return character.GetSkillValue(skill);
+        //}
+
+        //private int GetMeleeSkill(
+        //    BasicCharacterObject character,
+        //    WeaponComponentData equippedItem,
+        //    WeaponComponentData secondaryItem)
+        //{
+        //    SkillObject skill = DefaultSkills.Athletics;
+        //    if (equippedItem != null)
+        //    {
+        //        SkillObject relevantSkill = equippedItem.RelevantSkill;
+        //        skill = relevantSkill == DefaultSkills.OneHanded || relevantSkill == DefaultSkills.Polearm ? relevantSkill : (relevantSkill != DefaultSkills.TwoHanded ? DefaultSkills.OneHanded : (secondaryItem == null ? DefaultSkills.TwoHanded : DefaultSkills.OneHanded));
+        //    }
+        //    return character.GetSkillValue(skill);
+        //}
 
         private void EnhancedSetAiRelatedProperties(
             Agent agent,
@@ -83,32 +124,31 @@ namespace ImprovedCombatAI
                 missionWeapon = equipment[offHandItemIndex];
                 offHandWeapon = missionWeapon.CurrentUsageItem;
             }
-            var config = ImprovedCombatAI.Get();
+            var config = ImprovedCombatAIConfig.Get();
             float meleeAILevel;
-            if (config.ChangeMeleeAI)
+            if (config.DirectlySetMeleeAI)
             {
-                meleeAILevel = MathF.Clamp(config.MeleeAI / 100.0f, 0, 1);
+                meleeAILevel = MathF.Clamp(config.MeleeAIDifficulty / 100.0f, 0, 1);
             }
             else
             {
-                int meleeSkill = GetMeleeSkill(agent.Character, mainHandWeapon, offHandWeapon);
+                int meleeSkill = GetMeleeSkill(agent, mainHandWeapon, offHandWeapon);
                 meleeAILevel = CalculateAILevel(agent, meleeSkill);
-                meleeAILevel = MathF.Clamp( meleeAILevel / Math.Max(1 - config.MeleeAIDifficulty / 100f, 0.001f), 0, 1);
+                meleeAILevel = MathF.Clamp(meleeAILevel / Math.Max(1 - config.MeleeAIDifficulty / 100f, 0.001f), 0, 1);
             }
 
             float rangedAILevel;
-            if (config.ChangeRangedAI)
+            if (config.DirectlySetRangedAI)
             {
-                rangedAILevel = MathF.Clamp(config.RangedAI / 100.0f, 0, 1);
+                rangedAILevel = MathF.Clamp(config.RangedAIDifficulty / 100.0f, 0, 1);
             }
             else
             {
-                int weaponSkill = GetWeaponSkill(agent.Character, mainHandWeapon);
+                SkillObject skill = mainHandWeapon == null ? DefaultSkills.Athletics : mainHandWeapon.RelevantSkill;
+                int weaponSkill = GetEffectiveSkill(agent.Character, agent.Origin, agent.Formation, skill);
                 rangedAILevel = CalculateAILevel(agent, weaponSkill);
                 rangedAILevel = MathF.Clamp(rangedAILevel / Math.Max(1 - config.RangedAIDifficulty / 100f, 0.001f), 0, 1);
             }
-
-
 
             float num1 = meleeAILevel + agent.Defensiveness;
             agentDrivenProperties.AiRangedHorsebackMissileRange = (float)(0.300000011920929 + 0.400000005960464 * rangedAILevel);

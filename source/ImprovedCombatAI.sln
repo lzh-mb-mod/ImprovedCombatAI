@@ -3,9 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImprovedCombatAI", "ImprovedCombatAI.csproj", "{105D9CBE-5C8E-461C-BDB1-9125B432D6EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImprovedCombatAI", "ImprovedCombatAI\ImprovedCombatAI.csproj", "{105D9CBE-5C8E-461C-BDB1-9125B432D6EA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BasicSharedLibrary", "library\mission-library\source\BasicSharedLibrary\BasicSharedLibrary.shproj", "{035A7C54-5161-4057-BB0D-20D39A607B50}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MissionLibrary", "library\mission-library\source\MissionLibrary\MissionLibrary.csproj", "{7C285D75-0B3C-4860-BA2E-E0859F0D2BC8}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MissionSharedLibrary", "library\mission-library\source\MissionSharedLibrary\MissionSharedLibrary.shproj", "{BB80A10D-E971-4C13-8EA6-F31EF29BA86D}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		library\mission-library\source\BasicSharedLibrary\BasicSharedLibrary.projitems*{035a7c54-5161-4057-bb0d-20d39a607b50}*SharedItemsImports = 13
+		library\mission-library\source\BasicSharedLibrary\BasicSharedLibrary.projitems*{105d9cbe-5c8e-461c-bdb1-9125b432d6ea}*SharedItemsImports = 5
+		library\mission-library\source\MissionSharedLibrary\MissionSharedLibrary.projitems*{105d9cbe-5c8e-461c-bdb1-9125b432d6ea}*SharedItemsImports = 5
+		library\mission-library\source\BasicSharedLibrary\BasicSharedLibrary.projitems*{7c285d75-0b3c-4860-ba2e-e0859f0d2bc8}*SharedItemsImports = 5
+		library\mission-library\source\MissionSharedLibrary\MissionSharedLibrary.projitems*{bb80a10d-e971-4c13-8ea6-f31ef29ba86d}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -15,6 +28,10 @@ Global
 		{105D9CBE-5C8E-461C-BDB1-9125B432D6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{105D9CBE-5C8E-461C-BDB1-9125B432D6EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{105D9CBE-5C8E-461C-BDB1-9125B432D6EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C285D75-0B3C-4860-BA2E-E0859F0D2BC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C285D75-0B3C-4860-BA2E-E0859F0D2BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C285D75-0B3C-4860-BA2E-E0859F0D2BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C285D75-0B3C-4860-BA2E-E0859F0D2BC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

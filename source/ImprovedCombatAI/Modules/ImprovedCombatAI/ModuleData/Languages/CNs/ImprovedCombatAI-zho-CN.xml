@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+  <tags>
+    <tag language="简体中文" />
+  </tags>
+  <strings>
+    <string id="ImprovedCombatAI_option_class" text="改进的战斗AI" />
+    <string id="ImprovedCombatAI_ai_options" text="AI选项" />
+
+    <string id="ImprovedCombatAI_use_realistic_blocking" text="更真实的格挡机制" />
+
+    <string id="ImprovedCombatAI_melee_ai_difficulty" text="近战AI难度" />
+    <string id="ImprovedCombatAI_directly_set_melee_ai" text="直接设置近战AI等级" />
+    <string id="ImprovedCombatAI_directly_set_melee_ai_description" text="所有单位的近战AI等级都会被设为相同的值，该值等于上面的难度选项中的值。" />
+
+    <string id="ImprovedCombatAI_range_ai_difficulty" text="远程AI难度" />
+    <string id="ImprovedCombatAI_directly_set_ranged_ai" text="直接设置远程AI等级" />
+    <string id="ImprovedCombatAI_directly_set_ranged_ai_description" text="所有单位的远程AI等级都会被设为相同的值，该值等于上面的难度选项中的值。" />
+
+    <string id="ImprovedCombatAI_lead_error" text="远程AI预判(0.2-0.3效果最好)" />
+  </strings>
+</base>
