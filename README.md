@@ -5,7 +5,7 @@ A mod that provides features about changing AI to the base mode [`RTS Camera`](h
 ## Features
 - Improve combat(melee or ranged) AI level.
 
-  - Combat AI level is a value in the game used to determine the soldier's combat ability.
+  - Combat AI level is a value in the game used to determine the soldier's combat ability. With higher melee ai level, the soldier can block better, attack more ferociously and dexterously. With higher ranged ai level, the soldier shoot more accurately.
 
   - By default combat AI level is determined by the weapon skill of soldiers: the combat level are equal to his weapon skill divided by 3.5.
 
@@ -38,24 +38,13 @@ A mod that provides features about changing AI to the base mode [`RTS Camera`](h
   You can modify them manually, but if you edit it incorrectly or remove them, the configuration will be reset to default.
 
 ## Prerequisite
-- [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355)
+- [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355) is not required any more but if you use it, please make sure it's version is e3.9.15 or higher.
 
 ## How to install
-1. Please download and install the prerequisite mod [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355) first.
-
-2. Copy `Modules` folder into Bannerlord installation folder(For example `C:\Program Files\Steam\steamapps\common\Mount & Blade II Bannerlord - Beta`). It should be merged with `Modules` of the game. Or use Vortex to install it automatically.
-
-## Loading sequence requirement
-- `Improved Combat AI` should be loaded after `RTS Camera`.
+1. Copy `ImprovedCombatAI` folder into Bannerlord modules folder(For example `C:\Program Files\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules`). Or use Vortex to install it automatically.
 
 ## How to use
-- Start the launcher and choose Single player mode. In `Mods` panel select `RTS Camera` and `Improved Combat AI`, then click `PLAY`.
-
-  Then play the game as usual.
-
-- After entering a mission (scene):
-
-  - Press `O(letter)` (by default) and then click `Extension: Improved Combat AI` to open menu of this mod. You can access the options of this mod in it.
+- In a battle, press `L(letter)` (by default) then click to open menu of this mod. You can adjust settings of this mod in it.
 
 ## Troubleshoot
 - If the launcher can not start:
@@ -75,4 +64,4 @@ A mod that provides features about changing AI to the base mode [`RTS Camera`](h
     Optionally you can tell me the step to reproduce the crash.
 
 ## Contact with me
-* Please mail to: lizhenhuan1019@qq.com
+* Please mail to: lizhenhuan1019@qq.com or lizhenhuan1019@outlook.com

@@ -5,7 +5,7 @@
 ## 功能
 - 提高战斗AI等级（包括近战AI或远程AI）。
 
-  -  战斗AI等级决定了士兵AI的战斗表现。
+  -  战斗AI等级决定了士兵AI的战斗表现。更高的近战AI等级的士兵防御得更好，攻击也更凶猛和灵活。更高远程AI等级的士兵射击更加精准。
 
   - 默认情况下士兵的战斗AI等级取决于每个士兵的武器熟练度：战斗AI等级等于武器熟练度除以3.5。
 
@@ -38,26 +38,15 @@
   你可以修改配置，但如果你编辑有误或配置文件被移除，配置会被初始化为默认内容。
 
 ## 前置要求
-- [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355)
+- [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355) 已经不再是前置要求，但如果你使用了这个mod，请确保它是e3.9.15或更高的版本。
 
 ## 如何安装
-1. 请先下载安装前置mod[`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355)。
-
-2. 复制`Modules`文件夹到砍二的安装目录下（例如`C:\Program Files\Steam\steamapps\common\Mount & Blade II Bannerlord - Beta`)，和砍二本体的Modules文件夹合并。
+1. 复制`ImprovedCombatAI`文件夹到砍二的Modules目录下（例如`C:\Program Files\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules`)。
    
    或者你可以使用Vortex来自动安装。
 
-## 加载顺序
-- `Improved Combat AI`的加载顺序应当在`RTS Camera`之后。
-
 ## 如何使用
-- 启动游戏启动器，并选择单人模式(Singleplayer)。在Mods选项卡中勾选`RTS Camera`和`Improved Combat AI`并点击`Play`。
-
-  之后正常进行游戏。
-
-- 进入关卡（即进入场景）后：
-
-  - 默认情况下按`O(字母)`键，然后点击`扩展：改变AI`来打开本mod的菜单，你可以在其中访问本mod的所有选项。
+- 在战斗中按L可打开mod菜单。
 
 ## 解决问题
 - 若启动器无法启动：
@@ -77,4 +66,4 @@
     你可以选择告诉我重现崩溃的步骤。
 
 ## 联系我
-* 请发邮件到：lizhenhuan1019@qq.com
+* 请发邮件到：lizhenhuan1019@qq.com或lizhenhuan1019@outlook.com
