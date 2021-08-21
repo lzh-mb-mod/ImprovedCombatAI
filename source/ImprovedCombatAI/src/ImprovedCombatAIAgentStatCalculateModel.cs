@@ -155,7 +155,7 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiFacingMissileWatch = (float)(meleeAILevel * 0.0599999986588955 - 0.959999978542328);
             agentDrivenProperties.AiFlyingMissileCheckRadius = (float)(8.0 - 6.0 * meleeAILevel);
             agentDrivenProperties.AiShootFreq = (float)(0.300000011920929 + 0.699999988079071 * rangedAILevel);
-            agentDrivenProperties.AiWaitBeforeShootFactor = agent._propertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * rangedAILevel);
+            agentDrivenProperties.AiWaitBeforeShootFactor = agent.PropertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * rangedAILevel);
             int num2 = offHandWeapon != null ? 1 : 0;
             agentDrivenProperties.AIBlockOnDecideAbility = MBMath.Lerp(0.25f, 0.99f, MBMath.ClampFloat((float)Math.Pow(meleeAILevel, 1.0), 0.0f, 1f));
             agentDrivenProperties.AIParryOnDecideAbility = MBMath.Lerp(0.01f, 0.95f, MBMath.ClampFloat((float)Math.Pow(meleeAILevel, 1.5), 0.0f, 1f));
@@ -185,7 +185,7 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiRaiseShieldDelayTimeBase = (float)(0.5 * meleeAILevel - 0.75);
             agentDrivenProperties.AiUseShieldAgainstEnemyMissileProbability = (float)(0.100000001490116 + meleeAILevel * 0.600000023841858 + num1 * 0.200000002980232);
             agentDrivenProperties.AiCheckMovementIntervalFactor = (float)(0.00499999988824129 * (1.10000002384186 - meleeAILevel));
-            agentDrivenProperties.AiMovemetDelayFactor = (float)(4.0 / (3.0 + rangedAILevel));
+            agentDrivenProperties.AiMovementDelayFactor = (float)(4.0 / (3.0 + rangedAILevel));
             agentDrivenProperties.AiParryDecisionChangeValue = (float)(0.0500000007450581 + 0.699999988079071 * meleeAILevel);
             agentDrivenProperties.AiDefendWithShieldDecisionChanceValue = Math.Min(1f, (float)(0.200000002980232 + 0.5 * meleeAILevel + 0.200000002980232 * num1));
             agentDrivenProperties.AiMoveEnemySideTimeValue = (float)(0.5 * meleeAILevel - 2.5);
@@ -194,7 +194,7 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiStandGroundTimerMoveAlongValue = (float)(0.5 * meleeAILevel - 1.0);
             agentDrivenProperties.AiHearingDistanceFactor = 1f + meleeAILevel;
             agentDrivenProperties.AiChargeHorsebackTargetDistFactor = (float)(1.5 * (3.0 - meleeAILevel));
-            agentDrivenProperties.AiWaitBeforeShootFactor = agent._propertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * rangedAILevel);
+            agentDrivenProperties.AiWaitBeforeShootFactor = agent.PropertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * rangedAILevel);
             float num3 = 1f - rangedAILevel;
             agentDrivenProperties.AiRangerLeadErrorMin = (float)(-(double)num3 * 0.349999994039536) + config.RangedError;
             agentDrivenProperties.AiRangerLeadErrorMax = num3 * 0.2f + config.RangedError;
