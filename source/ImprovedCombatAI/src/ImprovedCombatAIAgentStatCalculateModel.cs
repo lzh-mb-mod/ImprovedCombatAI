@@ -156,7 +156,6 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiFlyingMissileCheckRadius = (float)(8.0 - 6.0 * meleeAILevel);
             agentDrivenProperties.AiShootFreq = (float)(0.300000011920929 + 0.699999988079071 * rangedAILevel);
             agentDrivenProperties.AiWaitBeforeShootFactor = agent.PropertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * rangedAILevel);
-            int num2 = offHandWeapon != null ? 1 : 0;
             agentDrivenProperties.AIBlockOnDecideAbility = MBMath.Lerp(0.25f, 0.99f, MBMath.ClampFloat((float)Math.Pow(meleeAILevel, 1.0), 0.0f, 1f));
             agentDrivenProperties.AIParryOnDecideAbility = MBMath.Lerp(0.01f, 0.95f, MBMath.ClampFloat((float)Math.Pow(meleeAILevel, 1.5), 0.0f, 1f));
             agentDrivenProperties.AiTryChamberAttackOnDecide = (float)((meleeAILevel - 0.150000005960464) * 0.100000001490116);
@@ -175,6 +174,7 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiAttackingShieldDefenseChance = (float)(0.200000002980232 + 0.300000011920929 * meleeAILevel);
             agentDrivenProperties.AiAttackingShieldDefenseTimer = (float)(0.300000011920929 * meleeAILevel - 0.300000011920929);
             agentDrivenProperties.AiRandomizedDefendDirectionChance = (float)(1.0 - Math.Log(meleeAILevel * 7.0 + 1.0, 2.0) * 0.333330005407333);
+            agentDrivenProperties.AiShooterError = 0.008f;
             agentDrivenProperties.AISetNoAttackTimerAfterBeingHitAbility = MBMath.ClampFloat((float)Math.Pow(meleeAILevel, 2.0), 0.05f, 0.95f);
             agentDrivenProperties.AISetNoAttackTimerAfterBeingParriedAbility = MBMath.ClampFloat((float)Math.Pow(meleeAILevel, 2.0), 0.05f, 0.95f);
             agentDrivenProperties.AISetNoDefendTimerAfterHittingAbility = MBMath.ClampFloat((float)Math.Pow(meleeAILevel, 2.0), 0.05f, 0.95f);
@@ -195,15 +195,20 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiHearingDistanceFactor = 1f + meleeAILevel;
             agentDrivenProperties.AiChargeHorsebackTargetDistFactor = (float)(1.5 * (3.0 - meleeAILevel));
             agentDrivenProperties.AiWaitBeforeShootFactor = agent.PropertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * rangedAILevel);
-            float num3 = 1f - rangedAILevel;
-            agentDrivenProperties.AiRangerLeadErrorMin = (float)(-(double)num3 * 0.349999994039536) + config.RangedError;
-            agentDrivenProperties.AiRangerLeadErrorMax = num3 * 0.2f + config.RangedError;
-            agentDrivenProperties.AiRangerVerticalErrorMultiplier = num3 * 0.1f;
-            agentDrivenProperties.AiRangerHorizontalErrorMultiplier = num3 * ((float)Math.PI / 90f);
+            float num2 = 1f - rangedAILevel;
+            agentDrivenProperties.AiRangerLeadErrorMin = (float)(-(double)num2 * 0.349999994039536) + config.RangedError;
+            agentDrivenProperties.AiRangerLeadErrorMax = num2 * 0.2f + config.RangedError;
+            agentDrivenProperties.AiRangerVerticalErrorMultiplier = num2 * 0.1f;
+            agentDrivenProperties.AiRangerHorizontalErrorMultiplier = num2 * ((float)Math.PI / 90f);
             agentDrivenProperties.AIAttackOnDecideChance = MathF.Clamp((float)(0.230000004172325 * CalculateAIAttackOnDecideMaxValue() * (3.0 - agent.Defensiveness)), 0.05f, 1f);
             //agentDrivenProperties.SetStat(DrivenProperty.UseRealisticBlocking, agent.Controller != Agent.ControllerType.Player ? 1f : 0.0f);
             if (config.UseRealisticBlocking)
                 agentDrivenProperties.SetStat(DrivenProperty.UseRealisticBlocking, 1f);
+        }
+
+        public override bool CanAgentRideMount(Agent agent, Agent targetMount)
+        {
+            return _previousModel.CanAgentRideMount(agent, targetMount);
         }
     }
 }
