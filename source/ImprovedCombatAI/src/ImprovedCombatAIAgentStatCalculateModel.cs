@@ -210,5 +210,25 @@ namespace ImprovedCombatAI
         {
             return _previousModel.CanAgentRideMount(agent, targetMount);
         }
+
+        public override float GetWeaponDamageMultiplier(BasicCharacterObject agentCharacter, IAgentOriginBase agentOrigin, Formation agentFormation, WeaponComponentData weapon)
+        {
+            return _previousModel.GetWeaponDamageMultiplier(agentCharacter, agentOrigin, agentFormation, weapon);
+        }
+
+        public override float GetKnockBackResistance(Agent agent)
+        {
+            return _previousModel.GetKnockBackResistance(agent);
+        }
+
+        public override float GetKnockDownResistance(Agent agent, StrikeType strikeType = StrikeType.Invalid)
+        {
+            return _previousModel.GetKnockDownResistance(agent, strikeType);
+        }
+
+        public override float GetDismountResistance(Agent agent)
+        {
+            return _previousModel.GetDismountResistance(agent);
+        }
     }
 }

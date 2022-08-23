@@ -18,10 +18,7 @@ namespace ImprovedCombatAI
 
 
             Initialize();
-            Module.CurrentModule.GlobalTextManager.LoadGameTexts(
-                ModuleHelper.GetXmlPath(ModuleId, "module_strings"));
-            Module.CurrentModule.GlobalTextManager.LoadGameTexts(
-                ModuleHelper.GetXmlPath(ModuleId, "MissionLibrary"));
+            Module.CurrentModule.GlobalTextManager.LoadGameTexts();
         }
 
         private void Initialize()
@@ -54,8 +51,7 @@ namespace ImprovedCombatAI
         {
             base.OnGameStart(game, gameStarterObject);
 
-            game.GameTextManager.LoadGameTexts(ModuleHelper.GetXmlPath(ModuleId, "module_strings"));
-            game.GameTextManager.LoadGameTexts(ModuleHelper.GetXmlPath(ModuleId, "MissionLibrary"));
+            game.GameTextManager.LoadGameTexts();
             gameStarterObject.AddModel(new ImprovedCombatAIAgentStatCalculateModel(GetGameModel<AgentStatCalculateModel>(gameStarterObject)));
         }
 
