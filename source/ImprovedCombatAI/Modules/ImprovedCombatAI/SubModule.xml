@@ -2,7 +2,7 @@
 <Module>
   <Name value = "Improved Combat AI"/>
   <Id value = "ImprovedCombatAI"/>
-  <Version value = "e2.4.1"/>
+  <Version value = "e2.4.2"/>
   <SingleplayerModule value="true"/>
   <MultiplayerModule value="false"/>
   <DependedModules>
@@ -10,7 +10,6 @@
     <DependedModule Id="SandBoxCore" DependentVersion="e1.8.0" />
     <DependedModule Id="Sandbox" DependentVersion="e1.8.0" />
     <DependedModule Id="StoryMode" DependentVersion="e1.8.0" />
-    <DependedModule Id="RTSCamera" DependentVersion="e4.1.0" Optional="true"/>
   </DependedModules>
   <SubModules>
     <SubModule>
