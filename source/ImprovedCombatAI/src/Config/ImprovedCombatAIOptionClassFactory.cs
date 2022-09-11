@@ -41,6 +41,37 @@ namespace ImprovedCombatAI.Config
                 optionCategory.AddOption(new BoolOptionViewModel(
                     new TextObject("Enable Tactical AI"), null, () => ImprovedCombatAIConfig.Get().EnableTacticalAI,
                     b => ImprovedCombatAIConfig.Get().EnableTacticalAI = b));
+                optionCategory.AddOption(new BoolOptionViewModel(new TextObject("EnableAiMoveEnemySideTimeValue"), null,
+                    () => ImprovedCombatAIConfig.Get().EnableAiMoveEnemySideTimeValue,
+                    b => ImprovedCombatAIConfig.Get().EnableAiMoveEnemySideTimeValue = b));
+                optionCategory.AddOption(new NumericOptionViewModel(new TextObject("AiMoveEnemySideTimeValue"), null,
+                    () => ImprovedCombatAIConfig.Get().AiMoveEnemySideTimeValue,
+                    f => ImprovedCombatAIConfig.Get().AiMoveEnemySideTimeValue = f, -5, 5, false, true));
+                optionCategory.AddOption(new BoolOptionViewModel(new TextObject("EnableAiMinimumDistanceToContinueFactor"), null,
+                    () => ImprovedCombatAIConfig.Get().EnableAiMinimumDistanceToContinueFactor,
+                    b => ImprovedCombatAIConfig.Get().EnableAiMinimumDistanceToContinueFactor = b));
+                optionCategory.AddOption(new NumericOptionViewModel(new TextObject("AiMinimumDistanceToContinueFactor"), null,
+                    () => ImprovedCombatAIConfig.Get().AiMinimumDistanceToContinueFactor,
+                    f => ImprovedCombatAIConfig.Get().AiMinimumDistanceToContinueFactor = f, -5, 5, false, true));
+                optionCategory.AddOption(new BoolOptionViewModel(new TextObject("EnableAiStandGroundTimerValue"), null,
+                    () => ImprovedCombatAIConfig.Get().EnableAiStandGroundTimerValue,
+                    b => ImprovedCombatAIConfig.Get().EnableAiStandGroundTimerValue = b));
+                optionCategory.AddOption(new NumericOptionViewModel(new TextObject("AiStandGroundTimerValue"), null,
+                    () => ImprovedCombatAIConfig.Get().AiStandGroundTimerValue,
+                    f => ImprovedCombatAIConfig.Get().AiStandGroundTimerValue = f, -5, 5, false, true));
+                optionCategory.AddOption(new BoolOptionViewModel(new TextObject("EnableAiStandGroundTimerMoveAlongValue"), null,
+                    () => ImprovedCombatAIConfig.Get().EnableAiStandGroundTimerMoveAlongValue,
+                    b => ImprovedCombatAIConfig.Get().EnableAiStandGroundTimerMoveAlongValue = b));
+                optionCategory.AddOption(new NumericOptionViewModel(new TextObject("AiStandGroundTimerMoveAlongValue"), null,
+                    () => ImprovedCombatAIConfig.Get().AiStandGroundTimerMoveAlongValue,
+                    f => ImprovedCombatAIConfig.Get().AiStandGroundTimerMoveAlongValue = f, -5, 5, false, true));
+                optionCategory.AddOption(new BoolOptionViewModel(new TextObject("EnableCheckMovementIntervalFactor"), null,
+                    () => ImprovedCombatAIConfig.Get().EnableCheckMovementIntervalFactor,
+                    b => ImprovedCombatAIConfig.Get().EnableCheckMovementIntervalFactor = b));
+                optionCategory.AddOption(new NumericOptionViewModel(new TextObject("CheckMovementIntervalFactor"), null,
+                    () => ImprovedCombatAIConfig.Get().CheckMovementIntervalFactor,
+                    f => ImprovedCombatAIConfig.Get().CheckMovementIntervalFactor = f, 0, 1f, false, true));
+
                 optionClass.AddOptionCategory(0, optionCategory);
                 return optionClass;
             }, ImprovedCombatAISubModule.ModuleId);

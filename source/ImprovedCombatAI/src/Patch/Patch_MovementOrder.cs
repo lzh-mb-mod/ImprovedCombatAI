@@ -45,8 +45,8 @@ namespace ImprovedCombatAI.Patch
             {
                 if (QueryLibrary.IsInfantry(unit))
                 {
-                    unit.SetAIBehaviorValues(HumanAIComponent.AISimpleBehaviorKind.GoToPos, 3, 10, 5, 50, 12);
-                    unit.SetAIBehaviorValues(HumanAIComponent.AISimpleBehaviorKind.Melee, 7, 2, 3.75f, 5, 2.4f);
+                    unit.SetAIBehaviorValues(HumanAIComponent.AISimpleBehaviorKind.GoToPos, 2, 2, 5.1f, 50, 12);
+                    unit.SetAIBehaviorValues(HumanAIComponent.AISimpleBehaviorKind.Melee, 7, 2, 4f, 5, 2f);
                     unit.SetAIBehaviorValues(HumanAIComponent.AISimpleBehaviorKind.Ranged, 0.01f, 10, 5, 20, 15f);
                     unit.SetAIBehaviorValues(HumanAIComponent.AISimpleBehaviorKind.ChargeHorseback, 11, 10, 10.7f, 60, 9);
                     unit.SetAIBehaviorValues(HumanAIComponent.AISimpleBehaviorKind.RangedHorseback, 0.01f, 7, 5, 8, 15);

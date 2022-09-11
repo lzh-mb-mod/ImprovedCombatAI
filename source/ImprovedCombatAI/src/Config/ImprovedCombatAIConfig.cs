@@ -39,6 +39,19 @@ namespace ImprovedCombatAI.Config
 
         public bool EnableTacticalAI = false;
 
+        public bool EnableAiMoveEnemySideTimeValue = false;
+        public float AiMoveEnemySideTimeValue;
+
+        public bool EnableAiMinimumDistanceToContinueFactor = false;
+        public float AiMinimumDistanceToContinueFactor;
+        public bool EnableAiStandGroundTimerValue = false;
+        public float AiStandGroundTimerValue;
+        public bool EnableAiStandGroundTimerMoveAlongValue = false;
+        public float AiStandGroundTimerMoveAlongValue;
+        public bool EnableCheckMovementIntervalFactor = false;
+        public float CheckMovementIntervalFactor;
+
+
         protected override void CopyFrom(ImprovedCombatAIConfig other)
         {
             ConfigVersion = other.ConfigVersion;
