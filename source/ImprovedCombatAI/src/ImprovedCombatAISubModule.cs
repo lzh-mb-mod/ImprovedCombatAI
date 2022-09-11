@@ -1,6 +1,9 @@
 ﻿using ImprovedCombatAI.Config;
+using ImprovedCombatAI.Patch;
 using MissionLibrary.View;
 using MissionSharedLibrary;
+using MissionSharedLibrary.Utilities;
+using System;
 using System.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.ModuleManager;
@@ -33,13 +36,16 @@ namespace ImprovedCombatAI
 
             if (!SecondInitialize())
                 return;
+
+            Patch_HumanAIComponent.Patch();
+            Patch_MovementOrder.Patch();
         }
 
         private bool SecondInitialize()
         {
             if (!Initializer.SecondInitialize())
                 return false;
-            
+
             var menuClassCollection = AMenuManager.Get().MenuClassCollection;
             AMenuManager.Get().OnMenuClosedEvent += ImprovedCombatAIConfig.OnMenuClosed;
             menuClassCollection.AddOptionClass(

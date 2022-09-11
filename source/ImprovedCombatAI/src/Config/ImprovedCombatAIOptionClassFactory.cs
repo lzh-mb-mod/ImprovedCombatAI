@@ -4,6 +4,7 @@ using MissionSharedLibrary.Provider;
 using MissionSharedLibrary.View.ViewModelCollection;
 using MissionSharedLibrary.View.ViewModelCollection.Options;
 using TaleWorlds.Core;
+using TaleWorlds.Localization;
 
 namespace ImprovedCombatAI.Config
 {
@@ -37,6 +38,9 @@ namespace ImprovedCombatAI.Config
                     GameTexts.FindText("str_improved_combat_ai_directly_set_ranged_ai"), GameTexts.FindText("str_improved_combat_ai_directly_set_ranged_ai_description"),
                     () => ImprovedCombatAIConfig.Get().DirectlySetRangedAI,
                     b => ImprovedCombatAIConfig.Get().DirectlySetRangedAI = b));
+                optionCategory.AddOption(new BoolOptionViewModel(
+                    new TextObject("Enable Tactical AI"), null, () => ImprovedCombatAIConfig.Get().EnableTacticalAI,
+                    b => ImprovedCombatAIConfig.Get().EnableTacticalAI = b));
                 optionClass.AddOptionCategory(0, optionCategory);
                 return optionClass;
             }, ImprovedCombatAISubModule.ModuleId);

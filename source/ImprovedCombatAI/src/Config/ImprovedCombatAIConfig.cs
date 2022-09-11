@@ -37,6 +37,8 @@ namespace ImprovedCombatAI.Config
 
         public float RangedError = 0;
 
+        public bool EnableTacticalAI = false;
+
         protected override void CopyFrom(ImprovedCombatAIConfig other)
         {
             ConfigVersion = other.ConfigVersion;
@@ -46,6 +48,7 @@ namespace ImprovedCombatAI.Config
             DirectlySetMeleeAI = other.DirectlySetMeleeAI;
             DirectlySetRangedAI = other.DirectlySetRangedAI;
             RangedError = other.RangedError;
+            EnableTacticalAI = other.EnableTacticalAI;
         }
 
         private static readonly string SavePathStatic =
