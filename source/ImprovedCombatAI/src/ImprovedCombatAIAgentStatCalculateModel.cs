@@ -190,8 +190,6 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiDefendWithShieldDecisionChanceValue = Math.Min(1f, (float)(0.200000002980232 + 0.5 * meleeAILevel + 0.200000002980232 * num1));
             agentDrivenProperties.AiMoveEnemySideTimeValue = (float)(0.5 * meleeAILevel - 2.5);
             agentDrivenProperties.AiMinimumDistanceToContinueFactor = (float)(2.0 + 0.300000011920929 * (3.0 - meleeAILevel));
-            agentDrivenProperties.AiStandGroundTimerValue = (float)(0.5 * (meleeAILevel - 1.0));
-            agentDrivenProperties.AiStandGroundTimerMoveAlongValue = (float)(0.5 * meleeAILevel - 1.0);
             agentDrivenProperties.AiHearingDistanceFactor = 1f + meleeAILevel;
             agentDrivenProperties.AiChargeHorsebackTargetDistFactor = (float)(1.5 * (3.0 - meleeAILevel));
             agentDrivenProperties.AiWaitBeforeShootFactor = agent.PropertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * rangedAILevel);
