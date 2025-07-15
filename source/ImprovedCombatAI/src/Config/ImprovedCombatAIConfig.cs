@@ -6,6 +6,14 @@ using TaleWorlds.MountAndBlade;
 
 namespace ImprovedCombatAI.Config
 {
+    public enum ApplyTo
+    {
+        None,
+        HeroOnly,
+        All,
+        Count
+    }
+
     public class ImprovedCombatAIConfig : MissionConfigBase<ImprovedCombatAIConfig>
     {
         protected static Version BinaryVersion => new Version(1, 0);
@@ -25,6 +33,8 @@ namespace ImprovedCombatAI.Config
         }
         public string ConfigVersion { get; set; } = BinaryVersion.ToString();
 
+        public ApplyTo ApplyTo = ApplyTo.All;
+
         public bool UseRealisticBlocking = false;
 
         public int MeleeAIDifficulty = 50;
@@ -37,15 +47,19 @@ namespace ImprovedCombatAI.Config
 
         public float RangedError = 0;
 
+        public bool OverrideDesireToAttack = true;
+
         protected override void CopyFrom(ImprovedCombatAIConfig other)
         {
             ConfigVersion = other.ConfigVersion;
+            ApplyTo = other.ApplyTo;
             UseRealisticBlocking = other.UseRealisticBlocking;
             MeleeAIDifficulty = other.MeleeAIDifficulty;
             RangedAIDifficulty = other.RangedAIDifficulty;
             DirectlySetMeleeAI = other.DirectlySetMeleeAI;
             DirectlySetRangedAI = other.DirectlySetRangedAI;
             RangedError = other.RangedError;
+            OverrideDesireToAttack = other.OverrideDesireToAttack;
         }
 
         private static readonly string SavePathStatic =

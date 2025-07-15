@@ -42,7 +42,7 @@ namespace ImprovedCombatAI
             
             var menuClassCollection = AMenuManager.Get().MenuClassCollection;
             AMenuManager.Get().OnMenuClosedEvent += ImprovedCombatAIConfig.OnMenuClosed;
-            menuClassCollection.AddOptionClass(
+            menuClassCollection.RegisterItem(
                 ImprovedCombatAIOptionClassFactory.CreateOptionClassProvider(menuClassCollection));
             return true;
         }

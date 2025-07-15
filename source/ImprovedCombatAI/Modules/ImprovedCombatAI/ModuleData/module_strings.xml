@@ -3,6 +3,11 @@
   <string id="str_improved_combat_ai_option_class" text="{=ImprovedCombatAI_option_class}Improved Combat AI" />
   <string id="str_improved_combat_ai_ai_options" text="{=ImprovedCombatAI_ai_options}AI options" />
 
+  <string id="str_improved_combat_ai_apply_to" text="{=ImprovedCombatAI_apply_to}Apply To" />
+  <string id="str_improved_combat_ai_apply_to_option.None" text="{=ImprovedCombatAI_apply_to_option_none}None" />
+  <string id="str_improved_combat_ai_apply_to_option.HeroOnly" text="{=ImprovedCombatAI_apply_to_option_hero_only}Hero only" />
+  <string id="str_improved_combat_ai_apply_to_option.All" text="{=ImprovedCombatAI_apply_to_option_all}All" />
+
   <string id="str_improved_combat_ai_use_realistic_blocking" text="{=ImprovedCombatAI_use_realistic_blocking}Use Realistic Blocking" />
 
   <string id="str_improved_combat_ai_melee_ai_difficulty" text="{=ImprovedCombatAI_melee_ai_difficulty}Melee AI Difficulty" />
@@ -13,4 +18,5 @@
   <string id="str_improved_combat_ai_directly_set_ranged_ai" text="{=ImprovedCombatAI_directly_set_ranged_ai}Directly Set Ranged AI Level" />
   <string id="str_improved_combat_ai_directly_set_ranged_ai_description" text="{=ImprovedCombatAI_directly_set_ranged_ai_description}The ranged AI level of all units will be set to the same value given in the difficulty option above." />
   <string id="str_improved_combat_ai_lead_error" text="{=ImprovedCombatAI_lead_error}Ranged AI Lead Error(0.2-0.3 are the best)" />
+  <string id="str_improved_combat_ai_override_desire_to_attack" text="{=ImprovedCombatAI_override_desire_to_attack}Override desire to attack" />
 </strings>
