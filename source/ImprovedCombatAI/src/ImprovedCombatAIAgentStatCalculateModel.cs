@@ -23,7 +23,8 @@ namespace ImprovedCombatAI
         public override void UpdateAgentStats(Agent agent, AgentDrivenProperties agentDrivenProperties)
         {
             _previousModel?.UpdateAgentStats(agent, agentDrivenProperties);
-            if (agent.IsHuman)
+            var config = ImprovedCombatAIConfig.Get();
+            if (agent.IsHuman && (config.ApplyTo == ApplyTo.All || config.ApplyTo == ApplyTo.HeroOnly && agent.IsHero))
             {
                 EnhancedSetAiRelatedProperties(agent, agentDrivenProperties);
             }
