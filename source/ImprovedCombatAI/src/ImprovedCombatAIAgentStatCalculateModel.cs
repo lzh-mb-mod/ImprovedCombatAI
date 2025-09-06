@@ -108,6 +108,8 @@ namespace ImprovedCombatAI
             }
             var config = ImprovedCombatAIConfig.Get();
             float meleeAILevel;
+            var currentModel = MissionGameModels.Current?.AgentStatCalculateModel;
+            var aiLevelMultiplier = currentModel == null ? 1f : ((float?)typeof(AgentStatCalculateModel).GetField("_AILevelMultiplier", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?.GetValue(currentModel)) ?? 1f;
             if (config.DirectlySetMeleeAI)
             {
                 meleeAILevel = MathF.Clamp(config.MeleeAIDifficulty / 100.0f, 0, 1);
@@ -116,7 +118,7 @@ namespace ImprovedCombatAI
             {
                 int meleeSkill = GetMeleeSkill(agent, mainHandWeapon, offHandWeapon);
                 meleeAILevel = CalculateAILevel(agent, meleeSkill);
-                meleeAILevel = MathF.Clamp(meleeAILevel / Math.Max(1 - config.MeleeAIDifficulty / 100f, 0.001f), 0, 1);
+                meleeAILevel = MathF.Clamp(meleeAILevel * aiLevelMultiplier / Math.Max(1 - config.MeleeAIDifficulty / 100f, 0.001f), 0, 1);
             }
 
             float rangedAILevel;
@@ -129,7 +131,7 @@ namespace ImprovedCombatAI
                 SkillObject skill = mainHandWeapon == null ? DefaultSkills.Athletics : mainHandWeapon.RelevantSkill;
                 int weaponSkill = GetEffectiveSkill(agent, skill);
                 rangedAILevel = CalculateAILevel(agent, weaponSkill);
-                rangedAILevel = MathF.Clamp(rangedAILevel / Math.Max(1 - config.RangedAIDifficulty / 100f, 0.001f), 0, 1);
+                rangedAILevel = MathF.Clamp(rangedAILevel * aiLevelMultiplier / Math.Max(1 - config.RangedAIDifficulty / 100f, 0.001f), 0, 1);
             }
 
             float num1 = meleeAILevel + agent.Defensiveness;
@@ -176,8 +178,8 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiChargeHorsebackTargetDistFactor = (float)(1.5 * (3.0 - meleeAILevel));
             agentDrivenProperties.AiWaitBeforeShootFactor = agent.PropertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * rangedAILevel);
             float num2 = 1f - rangedAILevel;
-            agentDrivenProperties.AiRangerLeadErrorMin = (float)(-(double)num2 * 0.35f) + config.RangedError;
-            agentDrivenProperties.AiRangerLeadErrorMax = num2 * 0.2f + config.RangedError;
+            agentDrivenProperties.AiRangerLeadErrorMin = (float)(-(double)num2 * 0.35f) + config.LeadingError;
+            agentDrivenProperties.AiRangerLeadErrorMax = num2 * 0.2f + config.LeadingError;
             agentDrivenProperties.AiRangerVerticalErrorMultiplier = num2 * 0.1f;
             agentDrivenProperties.AiRangerHorizontalErrorMultiplier = num2 * ((float)Math.PI / 90f);
             if (config.OverrideDesireToAttack)

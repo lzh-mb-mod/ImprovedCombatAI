@@ -45,7 +45,7 @@ namespace ImprovedCombatAI.Config
 
         public bool DirectlySetRangedAI = false;
 
-        public float RangedError = 0;
+        public float LeadingError = 0.25f;
 
         public bool OverrideDesireToAttack = true;
 
@@ -58,7 +58,7 @@ namespace ImprovedCombatAI.Config
             RangedAIDifficulty = other.RangedAIDifficulty;
             DirectlySetMeleeAI = other.DirectlySetMeleeAI;
             DirectlySetRangedAI = other.DirectlySetRangedAI;
-            RangedError = other.RangedError;
+            LeadingError = other.LeadingError;
             OverrideDesireToAttack = other.OverrideDesireToAttack;
         }
 

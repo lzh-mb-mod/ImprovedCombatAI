@@ -7,13 +7,13 @@ A mod that provides features about changing AI to the base mode [`RTS Camera`](h
 
   - Combat AI level is a value in the game used to determine the soldier's combat ability. With higher melee ai level, the soldier can block better, attack more ferociously and dexterously. With higher ranged ai level, the soldier shoot more accurately.
 
-  - By default combat AI level is determined by the weapon skill of soldiers: the combat level are equal to his weapon skill divided by 3.5.
+  - By default combat AI level is determined by the weapon skill of soldiers: the combat level are equal to his weapon skill divided by 3.
 
   - So soldier with weapon skill of 350 has the highest 100 combat AI level when using corresponding weapon.
 
   - Given the melee AI difficulty `x` set in this mod, the melee AI level will be divided by `1 - x/100`.
 
-  - For example, if a soldier has 100 one-handed weapon skill, and when he uses one-handed weapon, by default his melee AI level is 100 / 350 * 100 = 28.57. If the "Melee AI Difficulty" is set to 50, then his melee AI level will be 28.57 / (1 - 50/100) = 57.14, that is, doubled.
+  - For example, if a soldier has 100 one-handed weapon skill, and when he uses one-handed weapon, by default his melee AI level is 100 / 3 = 33.33. If the "Melee AI Difficulty" is set to 50, then his melee AI level will be 33.33 / (1 - 50/100) = 66.66, that is, doubled.
 
 - Be able to adjust combat AI level to any value between 0 and 100 directly.
 
@@ -38,7 +38,7 @@ A mod that provides features about changing AI to the base mode [`RTS Camera`](h
   You can modify them manually, but if you edit it incorrectly or remove them, the configuration will be reset to default.
 
 ## Prerequisite
-- [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355) is not required any more but if you use it, please make sure it's version is e3.9.15 or higher.
+- [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355) is not required any more but if you use it, please make sure it's version is v5.0.0 or higher.
 
 ## How to install
 1. Copy `ImprovedCombatAI` folder into Bannerlord modules folder(For example `C:\Program Files\Steam\steamapps\common\Mount & Blade II Bannerlord\Modules`). Or use Vortex to install it automatically.

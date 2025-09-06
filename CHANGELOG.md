@@ -1,5 +1,9 @@
 # Change Log
 
+## [v3.0.2] 2025-09-07
+### Added
+- Add usage hint
+
 ## [e2.3.0] - 2021-02-09
 ### Fixed
 - Remove RTS Camera from dependency.

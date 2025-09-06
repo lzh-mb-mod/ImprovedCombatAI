@@ -1,4 +1,5 @@
 ﻿using ImprovedCombatAI.Config;
+using ImprovedCombatAI.Usage;
 using MissionLibrary.View;
 using MissionSharedLibrary;
 using System.Linq;
@@ -35,11 +36,20 @@ namespace ImprovedCombatAI
                 return;
         }
 
+        protected override void OnApplicationTick(float dt)
+        {
+            base.OnApplicationTick(dt);
+
+            Initializer.OnApplicationTick(dt);
+        }
+
+
         private bool SecondInitialize()
         {
             if (!Initializer.SecondInitialize())
                 return false;
-            
+
+            ImprovedCombatAIUsageCategory.RegisterUsageCategory();
             var menuClassCollection = AMenuManager.Get().MenuClassCollection;
             AMenuManager.Get().OnMenuClosedEvent += ImprovedCombatAIConfig.OnMenuClosed;
             menuClassCollection.RegisterItem(

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29911.84
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImprovedCombatAI", "ImprovedCombatAI\ImprovedCombatAI.csproj", "{105D9CBE-5C8E-461C-BDB1-9125B432D6EA}"
 EndProject
@@ -12,13 +12,6 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MissionSharedLibrary", "library\mission-library\source\MissionSharedLibrary\MissionSharedLibrary.shproj", "{BB80A10D-E971-4C13-8EA6-F31EF29BA86D}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		library\mission-library\source\BasicSharedLibrary\BasicSharedLibrary.projitems*{035a7c54-5161-4057-bb0d-20d39a607b50}*SharedItemsImports = 13
-		library\mission-library\source\BasicSharedLibrary\BasicSharedLibrary.projitems*{105d9cbe-5c8e-461c-bdb1-9125b432d6ea}*SharedItemsImports = 5
-		library\mission-library\source\MissionSharedLibrary\MissionSharedLibrary.projitems*{105d9cbe-5c8e-461c-bdb1-9125b432d6ea}*SharedItemsImports = 5
-		library\mission-library\source\BasicSharedLibrary\BasicSharedLibrary.projitems*{7c285d75-0b3c-4860-ba2e-e0859f0d2bc8}*SharedItemsImports = 5
-		library\mission-library\source\MissionSharedLibrary\MissionSharedLibrary.projitems*{bb80a10d-e971-4c13-8ea6-f31ef29ba86d}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -38,5 +31,12 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E0854742-FEEF-4989-9CF9-50537CBA2EFF}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		library\mission-library\source\BasicSharedLibrary\BasicSharedLibrary.projitems*{035a7c54-5161-4057-bb0d-20d39a607b50}*SharedItemsImports = 13
+		library\mission-library\source\BasicSharedLibrary\BasicSharedLibrary.projitems*{105d9cbe-5c8e-461c-bdb1-9125b432d6ea}*SharedItemsImports = 5
+		library\mission-library\source\MissionSharedLibrary\MissionSharedLibrary.projitems*{105d9cbe-5c8e-461c-bdb1-9125b432d6ea}*SharedItemsImports = 5
+		library\mission-library\source\BasicSharedLibrary\BasicSharedLibrary.projitems*{7c285d75-0b3c-4860-ba2e-e0859f0d2bc8}*SharedItemsImports = 5
+		library\mission-library\source\MissionSharedLibrary\MissionSharedLibrary.projitems*{bb80a10d-e971-4c13-8ea6-f31ef29ba86d}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

@@ -53,8 +53,8 @@ namespace ImprovedCombatAI.Config
                     b => ImprovedCombatAIConfig.Get().DirectlySetRangedAI = b));
                 optionCategory.AddOption(new NumericOptionViewModel(
                     GameTexts.FindText("str_improved_combat_ai_lead_error"), null,
-                    () => ImprovedCombatAIConfig.Get().RangedError,
-                    b => ImprovedCombatAIConfig.Get().RangedError = b, 0, 1, false, true));
+                    () => ImprovedCombatAIConfig.Get().LeadingError,
+                    b => ImprovedCombatAIConfig.Get().LeadingError = b, 0, 1, false, true));
                 optionCategory.AddOption(new BoolOptionViewModel(
                     GameTexts.FindText("str_improved_combat_ai_override_desire_to_attack"), null,
                     () => ImprovedCombatAIConfig.Get().OverrideDesireToAttack,
