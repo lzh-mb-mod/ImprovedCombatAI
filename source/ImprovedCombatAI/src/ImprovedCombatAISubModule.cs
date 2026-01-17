@@ -2,9 +2,11 @@
 using ImprovedCombatAI.Usage;
 using MissionLibrary.View;
 using MissionSharedLibrary;
+using System;
 using System.Linq;
 using TaleWorlds.Core;
-using TaleWorlds.ModuleManager;
+using TaleWorlds.Engine;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace ImprovedCombatAI
@@ -17,22 +19,12 @@ namespace ImprovedCombatAI
         {
             base.OnSubModuleLoad();
 
-
             Initialize();
-            Module.CurrentModule.GlobalTextManager.LoadGameTexts();
         }
 
         private void Initialize()
         {
             if (!Initializer.Initialize(ModuleId))
-                return;
-        }
-
-        protected override void OnBeforeInitialModuleScreenSetAsRoot()
-        {
-            base.OnBeforeInitialModuleScreenSetAsRoot();
-
-            if (!SecondInitialize())
                 return;
         }
 
@@ -43,10 +35,27 @@ namespace ImprovedCombatAI
             Initializer.OnApplicationTick(dt);
         }
 
-
-        private bool SecondInitialize()
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
-            if (!Initializer.SecondInitialize())
+            base.OnBeforeInitialModuleScreenSetAsRoot();
+
+            if (!ThirdInitialize())
+                return;
+            try
+            {
+                Module.CurrentModule.GlobalTextManager.LoadGameTexts();
+            }
+            catch (Exception e)
+            {
+                MBDebug.Print(e.ToString());
+                InformationManager.DisplayMessage(new InformationMessage($"RTS Camera: failed to load game texts: {e}"));
+            }
+        }
+
+
+        private bool ThirdInitialize()
+        {
+            if (!Initializer.ThirdInitialize())
                 return false;
 
             ImprovedCombatAIUsageCategory.RegisterUsageCategory();

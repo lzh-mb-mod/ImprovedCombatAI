@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ImprovedCombatAI": {
+      "commandName": "Project"
+    },
+    "Bannerlord": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Epic Games\\MountAndBlade2\\bin\\Win64_Shipping_Client\\TaleWorlds.MountAndBlade.Launcher.exe",
+      "workingDirectory": "C:\\Program Files\\Epic Games\\MountAndBlade2\\bin\\Win64_Shipping_Client"
+    }
+  }
+}

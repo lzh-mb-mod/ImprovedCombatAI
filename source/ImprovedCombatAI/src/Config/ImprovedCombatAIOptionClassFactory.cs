@@ -17,14 +17,14 @@ namespace ImprovedCombatAI.Config
                 var optionClass = new OptionClass(ImprovedCombatAISubModule.ModuleId,
                     GameTexts.FindText("str_improved_combat_ai_option_class"), menuClassCollection);
 
-                var optionCategory = new OptionCategory("CombatAI", GameTexts.FindText("str_improved_combat_ai_ai_options"));
+                var optionCategory = new OptionCategory("CombatAI", GameTexts.FindText("str_improved_combat_ai_ai_options"), () => true, (b) => { });
                 optionCategory.AddOption(new SelectionOptionViewModel(
                     GameTexts.FindText("str_improved_combat_ai_apply_to"), null,
                     new SelectionOptionData(
                         i => ImprovedCombatAIConfig.Get().ApplyTo = (ApplyTo)i,
                         () => (int)ImprovedCombatAIConfig.Get().ApplyTo,
-                        (int)ApplyTo.Count,
-                        new[]
+                        () => (int)ApplyTo.Count,
+                        () => new[]
                         {
                             new SelectionItem(true, "str_improved_combat_ai_apply_to_option", "None"),
                             new SelectionItem(true, "str_improved_combat_ai_apply_to_option", "HeroOnly"),
@@ -51,10 +51,10 @@ namespace ImprovedCombatAI.Config
                     GameTexts.FindText("str_improved_combat_ai_directly_set_ranged_ai"), GameTexts.FindText("str_improved_combat_ai_directly_set_ranged_ai_description"),
                     () => ImprovedCombatAIConfig.Get().DirectlySetRangedAI,
                     b => ImprovedCombatAIConfig.Get().DirectlySetRangedAI = b));
-                optionCategory.AddOption(new NumericOptionViewModel(
-                    GameTexts.FindText("str_improved_combat_ai_lead_error"), null,
-                    () => ImprovedCombatAIConfig.Get().LeadingError,
-                    b => ImprovedCombatAIConfig.Get().LeadingError = b, 0, 1, false, true));
+                //optionCategory.AddOption(new NumericOptionViewModel(
+                //    GameTexts.FindText("str_improved_combat_ai_lead_error"), null,
+                //    () => ImprovedCombatAIConfig.Get().LeadingError,
+                //    b => ImprovedCombatAIConfig.Get().LeadingError = b, 0, 1, false, true));
                 optionCategory.AddOption(new BoolOptionViewModel(
                     GameTexts.FindText("str_improved_combat_ai_override_desire_to_attack"), null,
                     () => ImprovedCombatAIConfig.Get().OverrideDesireToAttack,

@@ -1,6 +1,12 @@
 # Change Log
 
-## [v3.0.2] 2025-09-07
+## [v3.1.0] - 2026-01-18
+### Fixed
+- Keep compatible with bannerlord v1.3.13.
+
+- Remove lead error option which doesn't work anymore in v1.3.13.
+
+## [v3.0.2] - 2025-09-07
 ### Added
 - Add usage hint
 

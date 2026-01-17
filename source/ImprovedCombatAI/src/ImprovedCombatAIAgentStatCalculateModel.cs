@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using ImprovedCombatAI.Config;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -9,6 +10,7 @@ namespace ImprovedCombatAI
     public class ImprovedCombatAIAgentStatCalculateModel : AgentStatCalculateModel
     {
         private readonly AgentStatCalculateModel _previousModel;
+        private FieldInfo _AILevelMultiplier = typeof(AgentStatCalculateModel).GetField("_AILevelMultiplier", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         public ImprovedCombatAIAgentStatCalculateModel(AgentStatCalculateModel previousModel)
         {
             _previousModel = previousModel;
@@ -82,7 +84,7 @@ namespace ImprovedCombatAI
             AgentDrivenProperties agentDrivenProperties)
         {
             MissionEquipment equipment = agent.Equipment;
-            EquipmentIndex mainHandItemIndex = agent.GetWieldedItemIndex(Agent.HandIndex.MainHand);
+            EquipmentIndex mainHandItemIndex = agent.GetPrimaryWieldedItemIndex();
             MissionWeapon missionWeapon;
             WeaponComponentData mainHandWeapon;
             if (mainHandItemIndex == EquipmentIndex.None)
@@ -95,7 +97,7 @@ namespace ImprovedCombatAI
                 mainHandWeapon = missionWeapon.CurrentUsageItem;
             }
 
-            EquipmentIndex offHandItemIndex = agent.GetWieldedItemIndex(Agent.HandIndex.OffHand);
+            EquipmentIndex offHandItemIndex = agent.GetOffhandWieldedItemIndex();
             WeaponComponentData offHandWeapon;
             if (offHandItemIndex == EquipmentIndex.None)
             {
@@ -109,7 +111,7 @@ namespace ImprovedCombatAI
             var config = ImprovedCombatAIConfig.Get();
             float meleeAILevel;
             var currentModel = MissionGameModels.Current?.AgentStatCalculateModel;
-            var aiLevelMultiplier = currentModel == null ? 1f : ((float?)typeof(AgentStatCalculateModel).GetField("_AILevelMultiplier", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?.GetValue(currentModel)) ?? 1f;
+            var aiLevelMultiplier = currentModel == null ? 1f : ((float?)_AILevelMultiplier?.GetValue(currentModel)) ?? 1f;
             if (config.DirectlySetMeleeAI)
             {
                 meleeAILevel = MathF.Clamp(config.MeleeAIDifficulty / 100.0f, 0, 1);
@@ -135,6 +137,7 @@ namespace ImprovedCombatAI
             }
 
             float num1 = meleeAILevel + agent.Defensiveness;
+            float difficultyModifier = this.GetDifficultyModifier();
             agentDrivenProperties.AiRangedHorsebackMissileRange = (float)(0.3f + 0.4f * rangedAILevel);
             agentDrivenProperties.AiFacingMissileWatch = (float)(meleeAILevel * 0.06f - 0.96f);
             agentDrivenProperties.AiFlyingMissileCheckRadius = (float)(8.0 - 6.0 * meleeAILevel);
@@ -143,11 +146,12 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AIBlockOnDecideAbility = MBMath.Lerp(0.5f, 0.99f, MBMath.ClampFloat((float)Math.Pow(meleeAILevel, 0.5f), 0.0f, 1f));
             agentDrivenProperties.AIParryOnDecideAbility = MBMath.Lerp(0.5f, 0.95f, MBMath.ClampFloat((float)meleeAILevel, 0.0f, 1f));
             agentDrivenProperties.AiTryChamberAttackOnDecide = (float)((meleeAILevel - 0.15f) * 0.1f);
-            agentDrivenProperties.AIAttackOnParryChance = (float)(0.3f - 0.1f * agent.Defensiveness);
+            agentDrivenProperties.AIAttackOnParryChance = (float)(0.08f - 0.02f * agent.Defensiveness);
             agentDrivenProperties.AiAttackOnParryTiming = (float)(0.3f * meleeAILevel - 0.2f);
             agentDrivenProperties.AIDecideOnAttackChance = 0.5f * agent.Defensiveness;
             agentDrivenProperties.AIParryOnAttackAbility = MBMath.ClampFloat((float)meleeAILevel, 0.0f, 1f);
-            agentDrivenProperties.AiKick = (float)(meleeAILevel - 0.1f);
+            //agentDrivenProperties.AiKick = (float)(meleeAILevel - 0.1f);
+            agentDrivenProperties.AiKick = (meleeAILevel > 0.4f ? 0.4f : meleeAILevel) - 0.1f;
             agentDrivenProperties.AiAttackCalculationMaxTimeFactor = meleeAILevel;
             agentDrivenProperties.AiDecideOnAttackWhenReceiveHitTiming = (float)(-0.25 * (1.0 - meleeAILevel));
             agentDrivenProperties.AiDecideOnAttackContinueAction = (float)(-0.5 * (1.0 - meleeAILevel));
@@ -168,13 +172,15 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AIHoldingReadyVariationPercentage = meleeAILevel;
             agentDrivenProperties.AiRaiseShieldDelayTimeBase = (float)(0.5 * meleeAILevel - 0.75);
             agentDrivenProperties.AiUseShieldAgainstEnemyMissileProbability = (float)(0.100000001490116 + meleeAILevel * 0.6f + num1 * 0.2f);
-            agentDrivenProperties.AiCheckMovementIntervalFactor = (float)(0.005f * (1.1f - meleeAILevel));
+            agentDrivenProperties.AiCheckApplyMovementInterval = (float)((2.0 - difficultyModifier) * (0.05 + 0.005 * (1.1 - meleeAILevel)));
+            agentDrivenProperties.AiCheckCalculateMovementInterval = agent.HasMount || agent.IsMount ? 0.25f : (float)((2.0 - (double)difficultyModifier) * 0.25);
+            agentDrivenProperties.AiCheckDecideSimpleBehaviorInterval = (float)((2.0 - (double)difficultyModifier) * (agent.GetAgentFlags().HasAnyFlag<AgentFlag>(AgentFlag.CanWieldWeapon) ? 1.5 : 0.2));
+            agentDrivenProperties.AiCheckDoSimpleBehaviorInterval = 2f - difficultyModifier;
             agentDrivenProperties.AiMovementDelayFactor = (float)(4.0 / (3.0 + rangedAILevel));
             agentDrivenProperties.AiParryDecisionChangeValue = (float)(0.05f + 0.7f * meleeAILevel);
-            agentDrivenProperties.AiDefendWithShieldDecisionChanceValue = Math.Min(2f, (float)(0.2f + 0.5 * meleeAILevel + 0.6f * num1));
+            agentDrivenProperties.AiDefendWithShieldDecisionChanceValue = Math.Min(2f, (float)(0.5f + meleeAILevel + 0.6f * num1));
             agentDrivenProperties.AiMoveEnemySideTimeValue = (float)(0.5 * meleeAILevel - 2.5);
             agentDrivenProperties.AiMinimumDistanceToContinueFactor = (float)(2.0 + 0.3f * (3.0 - meleeAILevel));
-            agentDrivenProperties.AiHearingDistanceFactor = 1f + meleeAILevel;
             agentDrivenProperties.AiChargeHorsebackTargetDistFactor = (float)(1.5 * (3.0 - meleeAILevel));
             agentDrivenProperties.AiWaitBeforeShootFactor = agent.PropertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * rangedAILevel);
             float num2 = 1f - rangedAILevel;
@@ -182,10 +188,14 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiRangerLeadErrorMax = num2 * 0.2f + config.LeadingError;
             agentDrivenProperties.AiRangerVerticalErrorMultiplier = num2 * 0.1f;
             agentDrivenProperties.AiRangerHorizontalErrorMultiplier = num2 * ((float)Math.PI / 90f);
+            agentDrivenProperties.AIAttackOnDecideChance = MathF.Clamp((float)(0.1 * (double)this.CalculateAIAttackOnDecideMaxValue() * (3.0 - (double)agent.Defensiveness)), 0.05f, 1f);
             if (config.OverrideDesireToAttack)
                 agentDrivenProperties.AIAttackOnDecideChance = MathF.Clamp((float)(0.3f * meleeAILevel * (3.0 - agent.Defensiveness)), 0.05f, 1f);
             if (config.UseRealisticBlocking)
                 agentDrivenProperties.SetStat(DrivenProperty.UseRealisticBlocking, 1f);
+            //agentDrivenProperties.AiWeaponFavorMultiplierMelee = 1f;
+            //agentDrivenProperties.AiWeaponFavorMultiplierRanged = 1f;
+            //agentDrivenProperties.AiWeaponFavorMultiplierPolearm = 1f;
         }
 
         public override bool CanAgentRideMount(Agent agent, Agent targetMount)
@@ -211,6 +221,21 @@ namespace ImprovedCombatAI
         public override float GetDismountResistance(Agent agent)
         {
             return _previousModel.GetDismountResistance(agent);
+        }
+
+        public override float GetEquipmentStealthBonus(Agent agent)
+        {
+            return _previousModel.GetEquipmentStealthBonus(agent);
+        }
+
+        public override float GetSneakAttackMultiplier(Agent agent, WeaponComponentData weapon)
+        {
+            return _previousModel.GetSneakAttackMultiplier(agent, weapon);
+        }
+
+        public override float GetBreatheHoldMaxDuration(Agent agent, float baseBreatheHoldMaxDuration)
+        {
+            return _previousModel.GetBreatheHoldMaxDuration(agent, baseBreatheHoldMaxDuration);
         }
     }
 }
