@@ -2,14 +2,14 @@
 <Module>
   <Name value = "Improved Combat AI"/>
   <Id value = "ImprovedCombatAI"/>
-  <Version value = "v3.1.0"/>
+  <Version value = "v3.1.1"/>
   <SingleplayerModule value="true"/>
   <MultiplayerModule value="false"/>
   <DependedModules>
-    <DependedModule Id="Native" DependentVersion="v1.3.13" />
-    <DependedModule Id="SandBoxCore" DependentVersion="v1.3.13" />
-    <DependedModule Id="Sandbox" DependentVersion="v1.3.13" />
-    <DependedModule Id="StoryMode" DependentVersion="v1.3.13" />
+    <DependedModule Id="Native" DependentVersion="v1.3.15" />
+    <DependedModule Id="SandBoxCore" DependentVersion="v1.3.15" />
+    <DependedModule Id="Sandbox" DependentVersion="v1.3.15" />
+    <DependedModule Id="StoryMode" DependentVersion="v1.3.15" />
   </DependedModules>
   <SubModules>
     <SubModule>
