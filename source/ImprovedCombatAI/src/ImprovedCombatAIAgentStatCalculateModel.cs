@@ -9,22 +9,20 @@ namespace ImprovedCombatAI
 {
     public class ImprovedCombatAIAgentStatCalculateModel : AgentStatCalculateModel
     {
-        private readonly AgentStatCalculateModel _previousModel;
         private FieldInfo _AILevelMultiplier = typeof(AgentStatCalculateModel).GetField("_AILevelMultiplier", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        public ImprovedCombatAIAgentStatCalculateModel(AgentStatCalculateModel previousModel)
+        public ImprovedCombatAIAgentStatCalculateModel()
         {
-            _previousModel = previousModel;
         }
 
         public override void InitializeAgentStats(Agent agent, Equipment spawnEquipment, AgentDrivenProperties agentDrivenProperties,
             AgentBuildData agentBuildData)
         {
-            _previousModel?.InitializeAgentStats(agent, spawnEquipment, agentDrivenProperties, agentBuildData);
+            BaseModel?.InitializeAgentStats(agent, spawnEquipment, agentDrivenProperties, agentBuildData);
         }
 
         public override void UpdateAgentStats(Agent agent, AgentDrivenProperties agentDrivenProperties)
         {
-            _previousModel?.UpdateAgentStats(agent, agentDrivenProperties);
+            BaseModel?.UpdateAgentStats(agent, agentDrivenProperties);
             var config = ImprovedCombatAIConfig.Get();
             if (agent.IsHuman && (config.ApplyTo == ApplyTo.All || config.ApplyTo == ApplyTo.HeroOnly && agent.IsHero))
             {
@@ -34,19 +32,19 @@ namespace ImprovedCombatAI
 
         public override float GetDifficultyModifier()
         {
-            return _previousModel?.GetDifficultyModifier() ?? 0.5f;
+            return BaseModel?.GetDifficultyModifier() ?? 0.5f;
         }
 
         public override void InitializeMissionEquipment(Agent agent)
         {
             base.InitializeMissionEquipment(agent);
 
-            _previousModel?.InitializeMissionEquipment(agent);
+            BaseModel?.InitializeMissionEquipment(agent);
         }
 
         public override float GetEffectiveMaxHealth(Agent agent)
         {
-            return _previousModel?.GetEffectiveMaxHealth(agent) ?? base.GetEffectiveMaxHealth(agent);
+            return BaseModel?.GetEffectiveMaxHealth(agent) ?? base.GetEffectiveMaxHealth(agent);
         }
 
         public override int GetEffectiveSkill(Agent agent, SkillObject skill)
@@ -61,22 +59,22 @@ namespace ImprovedCombatAI
 
         public override float GetInteractionDistance(Agent agent)
         {
-            return _previousModel?.GetInteractionDistance(agent) ?? base.GetInteractionDistance(agent);
+            return BaseModel?.GetInteractionDistance(agent) ?? base.GetInteractionDistance(agent);
         }
 
         public override float GetMaxCameraZoom(Agent agent)
         {
-            return _previousModel?.GetMaxCameraZoom(agent) ?? base.GetMaxCameraZoom(agent);
+            return BaseModel?.GetMaxCameraZoom(agent) ?? base.GetMaxCameraZoom(agent);
         }
 
         public override string GetMissionDebugInfoForAgent(Agent agent)
         {
-            return _previousModel?.GetMissionDebugInfoForAgent(agent) ?? base.GetMissionDebugInfoForAgent(agent);
+            return BaseModel?.GetMissionDebugInfoForAgent(agent) ?? base.GetMissionDebugInfoForAgent(agent);
         }
 
         public override float GetWeaponInaccuracy(Agent agent, WeaponComponentData weapon, int weaponSkill)
         {
-            return _previousModel?.GetWeaponInaccuracy(agent, weapon, weaponSkill) ?? base.GetWeaponInaccuracy(agent, weapon, weaponSkill);
+            return BaseModel?.GetWeaponInaccuracy(agent, weapon, weaponSkill) ?? base.GetWeaponInaccuracy(agent, weapon, weaponSkill);
         }
 
         private void EnhancedSetAiRelatedProperties(
@@ -119,7 +117,7 @@ namespace ImprovedCombatAI
             else
             {
                 int meleeSkill = GetMeleeSkill(agent, mainHandWeapon, offHandWeapon);
-                meleeAILevel = CalculateAILevel(agent, meleeSkill);
+                meleeAILevel = MathF.Lerp(config.MinMeleeAILevel, 1, CalculateAILevel(agent, meleeSkill));
                 meleeAILevel = MathF.Clamp(meleeAILevel * aiLevelMultiplier / Math.Max(1 - config.MeleeAIDifficulty / 100f, 0.001f), 0, 1);
             }
 
@@ -132,7 +130,7 @@ namespace ImprovedCombatAI
             {
                 SkillObject skill = mainHandWeapon == null ? DefaultSkills.Athletics : mainHandWeapon.RelevantSkill;
                 int weaponSkill = GetEffectiveSkill(agent, skill);
-                rangedAILevel = CalculateAILevel(agent, weaponSkill);
+                rangedAILevel = MathF.Lerp(config.MinRangedAILevel, 1, CalculateAILevel(agent, weaponSkill));
                 rangedAILevel = MathF.Clamp(rangedAILevel * aiLevelMultiplier / Math.Max(1 - config.RangedAIDifficulty / 100f, 0.001f), 0, 1);
             }
 
@@ -142,7 +140,6 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiFacingMissileWatch = (float)(meleeAILevel * 0.06f - 0.96f);
             agentDrivenProperties.AiFlyingMissileCheckRadius = (float)(8.0 - 6.0 * meleeAILevel);
             agentDrivenProperties.AiShootFreq = (float)(0.3f + 0.7f * rangedAILevel);
-            agentDrivenProperties.AiWaitBeforeShootFactor = agent.PropertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * rangedAILevel);
             agentDrivenProperties.AIBlockOnDecideAbility = MBMath.Lerp(0.5f, 0.99f, MBMath.ClampFloat((float)Math.Pow(meleeAILevel, 0.5f), 0.0f, 1f));
             agentDrivenProperties.AIParryOnDecideAbility = MBMath.Lerp(0.5f, 0.95f, MBMath.ClampFloat((float)meleeAILevel, 0.0f, 1f));
             agentDrivenProperties.AiTryChamberAttackOnDecide = (float)((meleeAILevel - 0.15f) * 0.1f);
@@ -184,8 +181,8 @@ namespace ImprovedCombatAI
             agentDrivenProperties.AiChargeHorsebackTargetDistFactor = (float)(1.5 * (3.0 - meleeAILevel));
             agentDrivenProperties.AiWaitBeforeShootFactor = agent.PropertyModifiers.resetAiWaitBeforeShootFactor ? 0.0f : (float)(1.0 - 0.5 * rangedAILevel);
             float num2 = 1f - rangedAILevel;
-            agentDrivenProperties.AiRangerLeadErrorMin = (float)(-(double)num2 * 0.35f) + config.LeadingError;
-            agentDrivenProperties.AiRangerLeadErrorMax = num2 * 0.2f + config.LeadingError;
+            agentDrivenProperties.AiRangerLeadErrorMin = (float)(-(double)num2 * 0.35f) - 1f;
+            agentDrivenProperties.AiRangerLeadErrorMax = num2 * 0.2f - 1f;
             agentDrivenProperties.AiRangerVerticalErrorMultiplier = num2 * 0.1f;
             agentDrivenProperties.AiRangerHorizontalErrorMultiplier = num2 * ((float)Math.PI / 90f);
             agentDrivenProperties.AIAttackOnDecideChance = MathF.Clamp((float)(0.1 * (double)this.CalculateAIAttackOnDecideMaxValue() * (3.0 - (double)agent.Defensiveness)), 0.05f, 1f);
@@ -200,42 +197,42 @@ namespace ImprovedCombatAI
 
         public override bool CanAgentRideMount(Agent agent, Agent targetMount)
         {
-            return _previousModel.CanAgentRideMount(agent, targetMount);
+            return BaseModel.CanAgentRideMount(agent, targetMount);
         }
 
         public override float GetWeaponDamageMultiplier(Agent agent, WeaponComponentData weapon)
         {
-            return _previousModel.GetWeaponDamageMultiplier(agent, weapon);
+            return BaseModel.GetWeaponDamageMultiplier(agent, weapon);
         }
 
         public override float GetKnockBackResistance(Agent agent)
         {
-            return _previousModel.GetKnockBackResistance(agent);
+            return BaseModel.GetKnockBackResistance(agent);
         }
 
         public override float GetKnockDownResistance(Agent agent, StrikeType strikeType = StrikeType.Invalid)
         {
-            return _previousModel.GetKnockDownResistance(agent, strikeType);
+            return BaseModel.GetKnockDownResistance(agent, strikeType);
         }
 
         public override float GetDismountResistance(Agent agent)
         {
-            return _previousModel.GetDismountResistance(agent);
+            return BaseModel.GetDismountResistance(agent);
         }
 
         public override float GetEquipmentStealthBonus(Agent agent)
         {
-            return _previousModel.GetEquipmentStealthBonus(agent);
+            return BaseModel.GetEquipmentStealthBonus(agent);
         }
 
         public override float GetSneakAttackMultiplier(Agent agent, WeaponComponentData weapon)
         {
-            return _previousModel.GetSneakAttackMultiplier(agent, weapon);
+            return BaseModel.GetSneakAttackMultiplier(agent, weapon);
         }
 
         public override float GetBreatheHoldMaxDuration(Agent agent, float baseBreatheHoldMaxDuration)
         {
-            return _previousModel.GetBreatheHoldMaxDuration(agent, baseBreatheHoldMaxDuration);
+            return BaseModel.GetBreatheHoldMaxDuration(agent, baseBreatheHoldMaxDuration);
         }
     }
 }

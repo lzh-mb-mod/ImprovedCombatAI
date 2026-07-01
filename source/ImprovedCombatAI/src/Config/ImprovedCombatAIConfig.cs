@@ -39,7 +39,11 @@ namespace ImprovedCombatAI.Config
 
         public int MeleeAIDifficulty = 50;
 
+        public int MinMeleeAILevel = 0;
+
         public int RangedAIDifficulty = 50;
+
+        public int MinRangedAILevel = 0;
 
         public bool DirectlySetMeleeAI = false;
 
@@ -55,7 +59,9 @@ namespace ImprovedCombatAI.Config
             ApplyTo = other.ApplyTo;
             UseRealisticBlocking = other.UseRealisticBlocking;
             MeleeAIDifficulty = other.MeleeAIDifficulty;
+            MinMeleeAILevel = other.MinMeleeAILevel;
             RangedAIDifficulty = other.RangedAIDifficulty;
+            MinRangedAILevel= other.MinRangedAILevel;
             DirectlySetMeleeAI = other.DirectlySetMeleeAI;
             DirectlySetRangedAI = other.DirectlySetRangedAI;
             LeadingError = other.LeadingError;

@@ -39,6 +39,10 @@ namespace ImprovedCombatAI.Config
                     GameTexts.FindText("str_improved_combat_ai_melee_ai_difficulty"), null,
                     () => ImprovedCombatAIConfig.Get().MeleeAIDifficulty,
                     f => ImprovedCombatAIConfig.Get().MeleeAIDifficulty = (int) f, 0, 100, true, true));
+                optionCategory.AddOption(new NumericOptionViewModel(
+                    GameTexts.FindText("str_improved_combat_ai_melee_ai_min_level"), GameTexts.FindText("str_improved_combat_ai_melee_ai_min_level_description"),
+                    () => ImprovedCombatAIConfig.Get().MinMeleeAILevel,
+                    f => ImprovedCombatAIConfig.Get().MinMeleeAILevel = (int)f, 0, 100, true, true));
                 optionCategory.AddOption(new BoolOptionViewModel(
                     GameTexts.FindText("str_improved_combat_ai_directly_set_melee_ai"), GameTexts.FindText("str_improved_combat_ai_directly_set_melee_ai_description"),
                     () => ImprovedCombatAIConfig.Get().DirectlySetMeleeAI,
@@ -47,6 +51,10 @@ namespace ImprovedCombatAI.Config
                     GameTexts.FindText("str_improved_combat_ai_ranged_ai_difficulty"), null,
                     () => ImprovedCombatAIConfig.Get().RangedAIDifficulty,
                     f => ImprovedCombatAIConfig.Get().RangedAIDifficulty = (int)f, 0, 100, true, true));
+                optionCategory.AddOption(new NumericOptionViewModel(
+                    GameTexts.FindText("str_improved_combat_ai_ranged_ai_min_level"), GameTexts.FindText("str_improved_combat_ai_ranged_ai_min_level_description"),
+                    () => ImprovedCombatAIConfig.Get().MinRangedAILevel,
+                    f => ImprovedCombatAIConfig.Get().MinRangedAILevel = (int)f, 0, 100, true, true));
                 optionCategory.AddOption(new BoolOptionViewModel(
                     GameTexts.FindText("str_improved_combat_ai_directly_set_ranged_ai"), GameTexts.FindText("str_improved_combat_ai_directly_set_ranged_ai_description"),
                     () => ImprovedCombatAIConfig.Get().DirectlySetRangedAI,

@@ -16,12 +16,16 @@
     <string id="ImprovedCombatAI_use_realistic_blocking" text="Use Realistic Blocking" />
 
     <string id="ImprovedCombatAI_melee_ai_difficulty" text="Melee AI Difficulty" />
+    <string id="ImprovedCombatAI_melee_ai_min_level" text="Melee AI Min Level" />
+    <string id="ImprovedCombatAI_melee_ai_min_level_description" text="The melee AI level of when weapon skill is 0." />
     <string id="ImprovedCombatAI_directly_set_melee_ai" text="Directly Set Melee AI Level" />
     <string id="ImprovedCombatAI_directly_set_melee_ai_description" text="The melee AI level of all units will be set to the same value given in the difficulty option above." />
 
 
     <string id="ImprovedCombatAI_range_ai_difficulty" text="Ranged AI Difficulty" />
-    <string id="ImprovedCombatAI_directly_set_ranged_ai" text="Directly Set Melee AI Level" />
+    <string id="ImprovedCombatAI_ranged_ai_min_level" text="Ranged AI Min Level" />
+    <string id="ImprovedCombatAI_ranged_ai_min_level_description" text="The ranged AI level of when weapon skill is 0." />
+    <string id="ImprovedCombatAI_directly_set_ranged_ai" text="Directly Set Ranged AI Level" />
     <string id="ImprovedCombatAI_directly_set_ranged_ai_description" text="The ranged AI level of all units will be set to the same value given in the difficulty option above." />
 
     <string id="ImprovedCombatAI_lead_error" text="Ranged AI Lead Error(0.2-0.3 are the best)" />

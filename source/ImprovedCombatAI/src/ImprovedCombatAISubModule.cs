@@ -71,7 +71,7 @@ namespace ImprovedCombatAI
             base.OnGameStart(game, gameStarterObject);
 
             game.GameTextManager.LoadGameTexts();
-            gameStarterObject.AddModel(new ImprovedCombatAIAgentStatCalculateModel(GetGameModel<AgentStatCalculateModel>(gameStarterObject)));
+            gameStarterObject.AddModel(new ImprovedCombatAIAgentStatCalculateModel());
         }
 
         private T GetGameModel<T>(IGameStarter gameStarter) where T : GameModel
