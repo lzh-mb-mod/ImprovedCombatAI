@@ -38,6 +38,7 @@ A mod that provides features about changing AI to the base mode [`RTS Camera`](h
   You can modify them manually, but if you edit it incorrectly or remove them, the configuration will be reset to default.
 
 ## Prerequisite
+- Bannerlord v1.4.8. Use the separate Beta build for Bannerlord v1.5.6 Beta.
 - [`RTS Camera`](https://www.nexusmods.com/mountandblade2bannerlord/mods/355) is not required any more but if you use it, please make sure it's version is v5.0.0 or higher.
 
 ## How to install

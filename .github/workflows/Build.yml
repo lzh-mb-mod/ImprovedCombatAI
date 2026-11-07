@@ -100,15 +100,25 @@ jobs:
           pathTarget: depotdownloader
 
       - name: Download Bannerlord binaries 1
-        run: depotdownloader/DepotDownloader.exe -app 261550 -depot 261551 -branch ${{steps.dotenv.outputs.game_version}} -username ${{secrets.STEAM_LOGIN}} -password ${{secrets.STEAM_PASSWORD}} -filelist ./.github/resources/FileFilters.regexp -dir bannerlord;
+        run: depotdownloader/DepotDownloader.exe -app 261550 -depot 261551 -branch ${{ steps.dotenv.outputs.game_branch == 'beta' && 'beta' || steps.dotenv.outputs.game_version }} -username ${{secrets.STEAM_LOGIN}} -password ${{secrets.STEAM_PASSWORD}} -filelist ./.github/resources/FileFilters.regexp -dir bannerlord;
 
       - name: Download Bannerlord binaries 2
-        run: depotdownloader/DepotDownloader.exe -app 261550 -depot 261552 -branch ${{steps.dotenv.outputs.game_version}} -username ${{secrets.STEAM_LOGIN}} -password ${{secrets.STEAM_PASSWORD}} -filelist ./.github/resources/FileFilters.regexp -dir bannerlord;
+        run: depotdownloader/DepotDownloader.exe -app 261550 -depot 261552 -branch ${{ steps.dotenv.outputs.game_branch == 'beta' && 'beta' || steps.dotenv.outputs.game_version }} -username ${{secrets.STEAM_LOGIN}} -password ${{secrets.STEAM_PASSWORD}} -filelist ./.github/resources/FileFilters.regexp -dir bannerlord;
+
+      - name: Verify Bannerlord version
+        env:
+          EXPECTED_GAME_VERSION: ${{ steps.dotenv.outputs.game_version }}
+        run: |
+          [xml]$native = Get-Content -LiteralPath .\bannerlord\Modules\Native\SubModule.xml -Raw
+          $actualVersion = $native.Module.Version.value
+          if ($actualVersion -ne $env:EXPECTED_GAME_VERSION) {
+            throw "Expected Bannerlord $env:EXPECTED_GAME_VERSION, but Steam returned $actualVersion."
+          }
 
       - name: Build Solution
         run: >-
           nuget restore .\source\ImprovedCombatAI.sln;
-          MSBuild.exe .\source\ImprovedCombatAI.sln /p:Configuration=Release /p:GamePath="$PWD\bannerlord\";
+          MSBuild.exe .\source\ImprovedCombatAI.sln /p:Configuration=Release /p:DeployToGame=false /p:GamePath="$PWD\bannerlord\";
       
       - name: Generate html files
         run: >-
@@ -154,7 +164,7 @@ jobs:
           # `true` to create a draft (unpublished) release, `false` to create a published one. Default: `false`
           # draft: # optional
           # `true` to identify the release as a prerelease. `false` to identify the release as a full release. Default: `false`
-          # prerelease: # optional
+          prerelease: ${{ steps.dotenv.outputs.game_branch == 'beta' }}
           # Any branch or commit SHA the Git tag is created from, unused if the Git tag already exists. Default: SHA of current commit
           # commitish: # optional
           # Owner of the repository if it is not the current one

@@ -1,5 +1,9 @@
 # Change Log
 
+## [v3.2.1]
+
+- Support Bannerlord v1.4.8 and update MissionLibrary for the in-battle menu.
+
 ## [v3.1.0] - 2026-01-18
 ### Fixed
 - Keep compatible with bannerlord v1.3.13.

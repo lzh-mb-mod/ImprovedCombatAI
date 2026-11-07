@@ -49,9 +49,6 @@
     <Reference Include="TaleWorlds.Diamond">
       <HintPath>$(GamePath)bin\Win64_Shipping_Client\TaleWorlds.Diamond.dll</HintPath>
     </Reference>
-    <Reference Include="TaleWorlds.Diamond.AccessProvider.Epic">
-      <HintPath>$(GamePath)bin\Win64_Shipping_Client\TaleWorlds.Diamond.AccessProvider.Epic.dll</HintPath>
-    </Reference>
     <Reference Include="TaleWorlds.Diamond.AccessProvider.Steam">
       <HintPath>$(GamePath)bin\Win64_Shipping_Client\TaleWorlds.Diamond.AccessProvider.Steam.dll</HintPath>
     </Reference>
@@ -84,9 +81,6 @@
     </Reference>
     <Reference Include="TaleWorlds.GauntletUI.PrefabSystem">
       <HintPath>$(GamePath)bin\Win64_Shipping_Client\TaleWorlds.GauntletUI.PrefabSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="TaleWorlds.GauntletUI.TooltipExtensions">
-      <HintPath>$(GamePath)bin\Win64_Shipping_Client\TaleWorlds.GauntletUI.TooltipExtensions.dll</HintPath>
     </Reference>
     <Reference Include="TaleWorlds.InputSystem">
       <HintPath>$(GamePath)bin\Win64_Shipping_Client\TaleWorlds.InputSystem.dll</HintPath>
@@ -139,14 +133,14 @@
   </ItemGroup>
 
   <Target Name="RemoveModulePackageDir" AfterTargets="BeforeBuild">
-    <Exec Command="rmdir &quot;$(ModulePackagePath)&quot; /s /q" />
+    <RemoveDir Directories="$(ModulePackagePath)" />
   </Target>
   
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy &quot;$(TargetPath)&quot; &quot;$(ModulePackagePath)bin\Win64_Shipping_Client\&quot; /C /I /Y /F" />
     <Exec Command="xcopy &quot;$(TargetDir)MissionLibrary.dll&quot; &quot;$(ModulePackagePath)bin\Win64_Shipping_Client\&quot; /C /I /Y /F" />
     <Exec Command="xcopy &quot;$(ProjectDir)Modules\.&quot; &quot;$(PackagePath)&quot; /E /C /I /Y /F" />
-    <Exec Command="xcopy &quot;$(ModulePackagePath).&quot; &quot;$(GamePath)Modules\$(ModuleAlias) &quot; /E /C /I /Y /F" />
+    <Exec Condition="'$(DeployToGame)' != 'false'" Command="xcopy &quot;$(ModulePackagePath).&quot; &quot;$(GamePath)Modules\$(ModuleAlias) &quot; /E /C /I /Y /F" />
   </Target>
 
 </Project>
